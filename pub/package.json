@@ -1,0 +1,33 @@
+{
+  "author": "Corno",
+  "bin": {},
+  "dependencies": {
+    "api-astn-handlers": "^0.1.0",
+    "api-pareto-ugly-stuff": "^0.1.0",
+    "pareto-core-lib": "^0.4.0",
+    "pareto-core-resolve": "^0.1.0",
+    "pareto-core-state": "^0.4.0",
+    "pareto-core-tostring": "^0.6.0"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "keywords": [],
+  "main": "./dist/index.js",
+  "bugs": {
+    "url": "https://github.com/corno/astn/issues"
+  },
+  "description": "",
+  "homepage": "https://github.com/corno/astn#readme",
+  "license": "ISC",
+  "name": "astn-expect-lib",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corno/astn-expect.git"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.18.0",
+  "interface-fingerprint": "89c64b30c446226ff8d3dad85d3355821045653e",
+  "content-fingerprint": "ef6f19372540efb15b283f73618a2a43c786602e"
+}
