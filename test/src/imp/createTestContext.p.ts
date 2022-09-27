@@ -7,7 +7,7 @@ import * as atl from "lib-astn-tokenizer"
 import * as ata from "api-astn-tokenizer"
 import * as uglyStuff from "api-pareto-ugly-stuff"
 
-import * as lib from "../../../pub/dist"
+import * as lib from "../../../pub"
 
 
 const parserLib = apl.init()
@@ -56,8 +56,8 @@ export function createTestContext(
             const ec = lib.$.createExpectContext<ata.TokenizerAnnotationData>(
                 {
 
-                    duplicateEntrySeverity: ["warning", {}],
-                    onDuplicateEntry: ["overwrite", {}],
+                    duplicateEntrySeverity: ["warning", null],
+                    onDuplicateEntry: ["overwrite", null],
                 },
                 {
                     issueHandler: ($) => {

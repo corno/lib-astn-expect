@@ -11,87 +11,87 @@ import * as api from "../interface"
 import { createDummyValueHandler } from "./dummyHandlers"
 import { IExpectContext } from "../interface"
 
-interface ICreateContext<Annotation> {
+interface ICreateContext<PAnnotation> {
     createDictionaryHandler(
         onEntry: ($: {
-            token: th.SimpleStringToken<Annotation>
-        }) => th.IRequiredValueHandler<Annotation>,
+            token: th.SimpleStringToken<PAnnotation>
+        }) => th.IRequiredValueHandler<PAnnotation>,
         onBegin?: ($: {
-            token: th.OpenObjectToken<Annotation>
+            token: th.OpenObjectToken<PAnnotation>
         }) => void,
         onEnd?: ($: {
             annotation: Annotation
         }) => void,
-    ): th.OnObject<Annotation>
+    ): th.OnObject<PAnnotation>
     createVerboseGroupHandler(
-        expectedProperties?: api.ExpectedProperties<Annotation>,
+        expectedProperties?: api.ExpectedProperties<PAnnotation>,
         onBegin?: ($: {
-            token: th.OpenObjectToken<Annotation>
+            token: th.OpenObjectToken<PAnnotation>
         }) => void,
         onEnd?: ($: {
             hasErrors: boolean
             annotation: Annotation
         }) => void,
         onUnexpectedProperty?: ($: {
-            token: th.SimpleStringToken<Annotation>
-        }) => th.IRequiredValueHandler<Annotation>,
-    ): th.OnObject<Annotation>
+            token: th.SimpleStringToken<PAnnotation>
+        }) => th.IRequiredValueHandler<PAnnotation>,
+    ): th.OnObject<PAnnotation>
     createShorthandGroupHandler(
-        expectedElements?: api.ExpectedElements<Annotation>,
+        expectedElements?: api.ExpectedElements<PAnnotation>,
         onBegin?: ($: {
-            token: th.OpenArrayToken<Annotation>
+            token: th.OpenArrayToken<PAnnotation>
         }) => void,
         onEnd?: ($: {
             annotation: Annotation
         }) => void
-    ): th.OnArray<Annotation>
+    ): th.OnArray<PAnnotation>
     createListHandler(
-        onElement: () => th.IValueHandler<Annotation>,
+        onElement: () => th.IValueHandler<PAnnotation>,
         onBegin?: ($: {
-            token: th.OpenArrayToken<Annotation>
+            token: th.OpenArrayToken<PAnnotation>
         }) => void,
         onEnd?: ($: {
             annotation: Annotation
         }) => void,
-    ): th.OnArray<Annotation>
+    ): th.OnArray<PAnnotation>
     createTaggedUnionHandler(
-        options?: api.Options<Annotation>,
+        options?: api.Options<PAnnotation>,
         onUnexpectedOption?: ($: {
-            taggedUnionToken: th.TaggedUnionToken<Annotation>
-            optionToken: th.SimpleStringToken<Annotation>
+            taggedUnionToken: th.TaggedUnionToken<PAnnotation>
+            optionToken: th.SimpleStringToken<PAnnotation>
         }) => void,
         onMissingOption?: () => void,
-    ): th.OnTaggedUnion<Annotation>
+    ): th.OnTaggedUnion<PAnnotation>
     createUnexpectedSimpleStringHandler(
         expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<Annotation>,
+        onInvalidType?: api.OnInvalidType<PAnnotation>,
         onNull?: ($: {
-            token: th.SimpleStringToken<Annotation>
+            token: th.SimpleStringToken<PAnnotation>
         }) => void,
-    ): th.OnSimpleString<Annotation>
+    ): th.OnSimpleString<PAnnotation>
     createUnexpectedMultilineStringHandler(
         expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<Annotation>,
-    ): th.OnMultilineString<Annotation>
+        onInvalidType?: api.OnInvalidType<PAnnotation>,
+    ): th.OnMultilineString<PAnnotation>
     createNullHandler(
         expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<Annotation>,
-    ): th.OnSimpleString<Annotation>
+        onInvalidType?: api.OnInvalidType<PAnnotation>,
+    ): th.OnSimpleString<PAnnotation>
     createUnexpectedTaggedUnionHandler(
         expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<Annotation>,
-    ): th.OnTaggedUnion<Annotation>
+        onInvalidType?: api.OnInvalidType<PAnnotation>,
+    ): th.OnTaggedUnion<PAnnotation>
     createUnexpectedObjectHandler(
         expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<Annotation>,
-    ): th.OnObject<Annotation>
+        onInvalidType?: api.OnInvalidType<PAnnotation>,
+    ): th.OnObject<PAnnotation>
     createUnexpectedArrayHandler(
         expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<Annotation>,
-    ): th.OnArray<Annotation>
+        onInvalidType?: api.OnInvalidType<PAnnotation>,
+    ): th.OnArray<PAnnotation>
 }
 
-function createCreateContext<Annotation>(
+function createCreateContext<PAnnotation>(
     $: {
         duplicateEntrySeverity: api.ExpectSeverity,
         onDuplicateEntry: api.OnDuplicateEntry,
@@ -111,24 +111,24 @@ function createCreateContext<Annotation>(
         getElement: uglyStuff.GetElement,
         arrayLength: uglyStuff.ArrayLength,
     },
-): ICreateContext<Annotation> {
+): ICreateContext<PAnnotation> {
     const onDuplicateEntry = $.onDuplicateEntry
     function raiseWarning(issue: api.ExpectIssue, annotation: Annotation): void {
         $i.issueHandler({
             issue: issue,
-            severity: ["warning", {}],
+            severity: ["warning", null],
             annotation: annotation,
         })
     }
     function raiseError(issue: api.ExpectIssue, annotation: Annotation): void {
         $i.issueHandler({
             issue: issue,
-            severity: ["error", {}],
+            severity: ["error", null],
             annotation: annotation,
         })
     }
 
-    function createDummyRequiredValueHandler(): th.IRequiredValueHandler<Annotation> {
+    function createDummyRequiredValueHandler(): th.IRequiredValueHandler<PAnnotation> {
         return {
             exists: createDummyValueHandler(),
             missing: () => { },
@@ -140,7 +140,7 @@ function createCreateContext<Annotation>(
             return (data) => {
 
                 if (data.token.token.type[0] !== "dictionary") {
-                    raiseWarning(["object is not a dictionary", {}], data.token.annotation)
+                    raiseWarning(["object is not a dictionary", null], data.token.annotation)
                 }
                 if (onBegin) {
                     onBegin(data)
@@ -148,7 +148,7 @@ function createCreateContext<Annotation>(
                 const foundEntries: string[] = []
                 return {
                     property: (propertyData) => {
-                        const process = (): th.IRequiredValueHandler<Annotation> => {
+                        const process = (): th.IRequiredValueHandler<PAnnotation> => {
                             if ($d.includes(foundEntries, propertyData.token.token.value)) {
                                 switch ($.duplicateEntrySeverity[0]) {
                                     case "error":
@@ -195,7 +195,7 @@ function createCreateContext<Annotation>(
             return (data) => {
 
                 if (data.token.token.type[0] !== "verbose group") {
-                    raiseWarning(["object is not a verbose group", {}], data.token.annotation)
+                    raiseWarning(["object is not a verbose group", null], data.token.annotation)
                 }
                 if (onBegin) {
                     onBegin(data)
@@ -204,7 +204,7 @@ function createCreateContext<Annotation>(
                 let hasErrors = false
                 return {
                     property: ($$) => {
-                        const onProperty = (): th.IRequiredValueHandler<Annotation> => {
+                        const onProperty = (): th.IRequiredValueHandler<PAnnotation> => {
                             const expected = properties[$$.token.token.value]
                             if (expected === undefined) {
                                 hasErrors = true
@@ -223,7 +223,7 @@ function createCreateContext<Annotation>(
                             }
                             return expected.onExists($$)
                         }
-                        const process = (): th.IRequiredValueHandler<Annotation> => {
+                        const process = (): th.IRequiredValueHandler<PAnnotation> => {
                             if ($d.includes(foundProperies, $$.token.token.value)) {
                                 switch ($.duplicateEntrySeverity[0]) {
                                     case "error":
@@ -294,7 +294,7 @@ function createCreateContext<Annotation>(
                     onBegin(typeData)
                 }
                 if (typeData.token.token.type[0] !== "shorthand group") {
-                    raiseWarning(["array is not a shorthand group", {}], typeData.token.annotation)
+                    raiseWarning(["array is not a shorthand group", null], typeData.token.annotation)
                 }
                 let index = 0
                 return {
@@ -305,23 +305,23 @@ function createCreateContext<Annotation>(
                             const dvh = createDummyValueHandler()
                             return {
                                 object: (data) => {
-                                    raiseError(["superfluous element", {}], data.token.annotation)
+                                    raiseError(["superfluous element", null], data.token.annotation)
                                     return dvh.object(data)
                                 },
                                 array: (data) => {
-                                    raiseError(["superfluous element", {}], data.token.annotation)
+                                    raiseError(["superfluous element", null], data.token.annotation)
                                     return dvh.array(data)
                                 },
                                 simpleString: (data) => {
-                                    raiseError(["superfluous element", {}], data.token.annotation)
+                                    raiseError(["superfluous element", null], data.token.annotation)
                                     return dvh.simpleString(data)
                                 },
                                 multilineString: (data) => {
-                                    raiseError(["superfluous element", {}], data.token.annotation)
+                                    raiseError(["superfluous element", null], data.token.annotation)
                                     return dvh.multilineString(data)
                                 },
                                 taggedUnion: (data) => {
-                                    raiseError(["superfluous element", {}], data.token.annotation)
+                                    raiseError(["superfluous element", null], data.token.annotation)
                                     return dvh.taggedUnion(data)
                                 },
                             }
@@ -365,7 +365,7 @@ function createCreateContext<Annotation>(
         ) => {
             return (data) => {
                 if (data.token.token.type[0] !== "list") {
-                    raiseWarning(["array is not a list", {}], data.token.annotation)
+                    raiseWarning(["array is not a list", null], data.token.annotation)
                 }
                 if (onBegin) {
                     onBegin(data)
@@ -547,14 +547,14 @@ function createCreateContext<Annotation>(
     }
 }
 
-export function createExpectContext<Annotation>(
+export function createExpectContext<PAnnotation>(
     $: {
         duplicateEntrySeverity: api.ExpectSeverity
         onDuplicateEntry: api.OnDuplicateEntry
     },
     $i: {
-        issueHandler: api.IssueHandler<Annotation>
-        onInvalidType: api.OnInvalidType<Annotation>
+        issueHandler: api.IssueHandler<PAnnotation>
+        onInvalidType: api.OnInvalidType<PAnnotation>
     },
     $d: {
         push: uglyStuff.Push,
@@ -562,7 +562,7 @@ export function createExpectContext<Annotation>(
         getElement: uglyStuff.GetElement,
         arrayLength: uglyStuff.ArrayLength,
     },
-): IExpectContext<Annotation> {
+): IExpectContext<PAnnotation> {
 
     function raiseError(
         issue: api.ExpectIssue,
@@ -570,7 +570,7 @@ export function createExpectContext<Annotation>(
     ): void {
         $i.issueHandler({
             issue: issue,
-            severity: ["error", {}],
+            severity: ["error", null],
             annotation: annotation,
         })
     }
@@ -580,7 +580,7 @@ export function createExpectContext<Annotation>(
     ): void {
         $i.issueHandler({
             issue: issue,
-            severity: ["warning", {}],
+            severity: ["warning", null],
             annotation: annotation,
         })
     }
@@ -594,10 +594,10 @@ export function createExpectContext<Annotation>(
     function expectSimpleStringImp(
         expected: api.ExpectedValue,
         callback: ($: {
-            token: th.SimpleStringToken<Annotation>
+            token: th.SimpleStringToken<PAnnotation>
         }) => void,
-        onInvalidType?: api.OnInvalidType<Annotation>,
-    ): th.IValueHandler<Annotation> {
+        onInvalidType?: api.OnInvalidType<PAnnotation>,
+    ): th.IValueHandler<PAnnotation> {
         return {
             array: createContext.createUnexpectedArrayHandler(expected, onInvalidType),
             object: createContext.createUnexpectedObjectHandler(expected, onInvalidType),
@@ -626,7 +626,7 @@ export function createExpectContext<Annotation>(
                 ($$) => {
                     if ($$.token.token.wrapping[0] !== "quote") {
                         if ($.warningOnly) {
-                            raiseWarning(["string is not quoted", {}], $$.token.annotation)
+                            raiseWarning(["string is not quoted", null], $$.token.annotation)
                             return $.callback({
                                 token: $$.token,
                             })
@@ -637,7 +637,7 @@ export function createExpectContext<Annotation>(
                                 })
                             } else {
                                 raiseError(
-                                    ["string is not quoted", {}],
+                                    ["string is not quoted", null],
                                     $$.token.annotation,
                                 )
                             }
@@ -661,7 +661,7 @@ export function createExpectContext<Annotation>(
                 ($$) => {
                     if ($$.token.token.wrapping[0] !== "none") {
                         if ($.warningOnly) {
-                            raiseWarning(["string should not have quotes or apostrophes", {}], $$.token.annotation)
+                            raiseWarning(["string should not have quotes or apostrophes", null], $$.token.annotation)
                             return $.callback({
                                 token: $$.token,
                             })
@@ -672,7 +672,7 @@ export function createExpectContext<Annotation>(
                                 })
                             } else {
                                 raiseError(
-                                    ["string should not have quotes or apostrophes", {}],
+                                    ["string should not have quotes or apostrophes", null],
                                     $$.token.annotation,
                                 )
                             }

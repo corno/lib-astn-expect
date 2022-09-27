@@ -1,5 +1,4 @@
 import * as pl from "pareto-core-lib"
-import * as ps from "pareto-core-tostring"
 
 import * as api from "../interface"
 

@@ -7,8 +7,7 @@
     "pareto-core-lib": "^0.4.0",
     "pareto-core-resolve": "^0.1.0",
     "pareto-core-state": "^0.4.0",
-    "pareto-core-tostring": "^0.6.0"
-  },
+      },
   "files": [
     "dist",
     "data"

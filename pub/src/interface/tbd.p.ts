@@ -4,20 +4,20 @@ import { ExpectIssue } from "./types/ExpectIssue"
 import * as uglyStuff from "api-pareto-ugly-stuff"
 
 export type ExpectSeverity =
-    | ["warning", {}]
-    | ["error", {}]
-    | ["nothing", {}]
+    | ["warning", null]
+    | ["error", null]
+    | ["nothing", null]
 
 export type OnDuplicateEntry =
-    | ["ignore", {}]
-    | ["overwrite", {}]
+    | ["ignore", null]
+    | ["overwrite", null]
 
 
 export type DiagnosticSeverity =
-    | ["warning", {}]
-    | ["error", {}]
+    | ["warning", null]
+    | ["error", null]
 
-export type IssueHandler<Annotation> = (
+export type IssueHandler<PAnnotation> = (
     $: {
         issue: ExpectIssue
         severity: DiagnosticSeverity
@@ -25,14 +25,14 @@ export type IssueHandler<Annotation> = (
     }
 ) => void
 
-export type CreateExpectContext = <Annotation>(
+export type CreateExpectContext = <PAnnotation>(
     $: {
         duplicateEntrySeverity: ExpectSeverity
         onDuplicateEntry: OnDuplicateEntry
     },
     $i: {
-        issueHandler: IssueHandler<Annotation>
-        onInvalidType: OnInvalidType<Annotation>
+        issueHandler: IssueHandler<PAnnotation>
+        onInvalidType: OnInvalidType<PAnnotation>
     },
     $d: {
         push: uglyStuff.Push,
@@ -40,7 +40,7 @@ export type CreateExpectContext = <Annotation>(
         getElement: uglyStuff.GetElement,
         arrayLength: uglyStuff.ArrayLength,
     },
-) => IExpectContext<Annotation>
+) => IExpectContext<PAnnotation>
 
 export type CreateExpectIssueMessage_Data = {
     issue: ExpectIssue
