@@ -1,51 +1,58 @@
-
-import { IExpectContext, OnInvalidType } from "./interfaces/IExpectContext"
-import { ExpectIssue } from "./types/ExpectIssue"
 import * as uglyStuff from "api-pareto-ugly-stuff"
+import * as tostring from "api-pareto-tostring"
 
-export type ExpectSeverity =
+
+
+import { XExpectContext, IOnInvalidType } from "./interfaces/IExpectContext.p"
+import { TExpectIssue } from "./types/ExpectIssue.p"
+
+export type TExpectSeverity =
     | ["warning", null]
     | ["error", null]
     | ["nothing", null]
 
-export type OnDuplicateEntry =
+export type TOnDuplicateEntry =
     | ["ignore", null]
     | ["overwrite", null]
 
 
-export type DiagnosticSeverity =
+export type TDiagnosticSeverity =
     | ["warning", null]
     | ["error", null]
 
-export type IssueHandler<PAnnotation> = (
+export type IIssueHandler<PAnnotation> = (
     $: {
-        issue: ExpectIssue
-        severity: DiagnosticSeverity
-        annotation: Annotation
+        readonly "issue": TExpectIssue
+        readonly "severity": TDiagnosticSeverity
+        readonly "annotation": PAnnotation
     }
 ) => void
 
-export type CreateExpectContext = <PAnnotation>(
+export type FCreateExpectContext = <PAnnotation>(
     $: {
-        duplicateEntrySeverity: ExpectSeverity
-        onDuplicateEntry: OnDuplicateEntry
+        readonly "duplicateEntrySeverity": TExpectSeverity
+        readonly "onDuplicateEntry": TOnDuplicateEntry
     },
     $i: {
-        issueHandler: IssueHandler<PAnnotation>
-        onInvalidType: OnInvalidType<PAnnotation>
+        readonly "issueHandler": IIssueHandler<PAnnotation>
+        readonly "onInvalidType": IOnInvalidType<PAnnotation>
     },
     $d: {
-        push: uglyStuff.Push,
-        includes: uglyStuff.Includes,
-        getElement: uglyStuff.GetElement,
-        arrayLength: uglyStuff.ArrayLength,
+        //push: uglyStuff.Push,
+        includes: uglyStuff.FIncludes,
+        getElement: uglyStuff.FGetElement,
+        arrayLength: uglyStuff.FArrayLength,
     },
-) => IExpectContext<PAnnotation>
+) => XExpectContext<PAnnotation>
 
 export type CreateExpectIssueMessage_Data = {
-    issue: ExpectIssue
+    issue: TExpectIssue
 }
 
 export type CreateExpectIssueMessage = (
     $: CreateExpectIssueMessage_Data,
+    $d: {
+        getKeysAsString: tostring.FGetKeysAsString
+        getNumberOfKeysAsString: tostring.FGetNumberOfKeysAsString
+    }
 ) => string

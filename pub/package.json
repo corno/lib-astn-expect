@@ -2,12 +2,13 @@
   "author": "Corno",
   "bin": {},
   "dependencies": {
-    "api-astn-handlers": "^0.1.0",
-    "api-pareto-ugly-stuff": "^0.1.0",
-    "pareto-core-lib": "^0.4.0",
-    "pareto-core-resolve": "^0.1.0",
-    "pareto-core-state": "^0.4.0",
-      },
+    "api-astn-handlers": "^0.3.0",
+    "api-pareto-ugly-stuff": "^0.10.0",
+    "pareto-core-lib": "^0.13.0",
+    "pareto-core-resolve": "^0.4.0",
+    "pareto-core-state": "^0.10.0",
+    "res-pareto-tostring": "^0.4.0"
+  },
   "files": [
     "dist",
     "data"

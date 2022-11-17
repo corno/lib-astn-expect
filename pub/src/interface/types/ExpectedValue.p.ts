@@ -1,23 +1,23 @@
 
-export type ExpectedValueType =
-    | "array"
-    | "boolean"
-    | "dictionary"
-    | "list"
-    | "nothing"
-    | "null"
-    | "number"
-    | "object"
-    | "nonwrapped string"
-    | "quoted string"
-    | "shorthand group"
-    | "string"
-    | "tagged union"
-    | "type or shorthand group"
-    | "type"
-    | "verbose group"
+export type TExpectedValueType =
+    | ["array", null]
+    | ["boolean", null]
+    | ["dictionary", null]
+    | ["list", null]
+    | ["nothing", null]
+    | ["null", null]
+    | ["number", null]
+    | ["object", null]
+    | ["nonwrapped string", null]
+    | ["quoted string", null]
+    | ["shorthand group", null]
+    | ["string", null]
+    | ["tagged union", null]
+    | ["type or shorthand group", null]
+    | ["type", null]
+    | ["verbose group", null]
 
-export type ExpectedValue = {
-    readonly "type": ExpectedValueType
+export type TExpectedValue = {
+    readonly "type": TExpectedValueType
     readonly "null allowed": boolean
 }

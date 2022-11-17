@@ -1,3 +1,5 @@
+import * as pt from "pareto-core-types"
+
 import * as sp from "api-astn-handlers"
 
 export type ExpectedElement<PAnnotation> = {
@@ -5,173 +7,170 @@ export type ExpectedElement<PAnnotation> = {
     getHandler: () => sp.IRequiredValueHandler<PAnnotation>
 }
 
-export type ExpectedElements<PAnnotation> = ExpectedElement<PAnnotation>[]
+export type IExpectedElements<PAnnotation> = ExpectedElement<PAnnotation>[]
 
-export type ExpectedProperty<PAnnotation> = {
+export type IExpectedProperty<PAnnotation> = {
     onExists: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
     }) => sp.IRequiredValueHandler<PAnnotation>
     onNotExists: null | (($: {
-        beginToken: sp.OpenObjectToken<PAnnotation>
-        endToken: sp.CloseObjectToken<PAnnotation>
+        beginToken: sp.TOpenObjectToken<PAnnotation>
+        endToken: sp.TCloseObjectToken<PAnnotation>
     }) => void) //if onNotExists is null and the property does not exist, an error will be raised
 }
 
-export type ExpectedProperties<PAnnotation> = {
-    [key: string]: ExpectedProperty<PAnnotation>
-}
+export type IExpectedProperties<PAnnotation> = pt.Dictionary<IExpectedProperty<PAnnotation>>
 
-export type Options<PAnnotation> = {
-    [key: string]: (
-        taggedUnionToken: sp.TaggedUnionToken<PAnnotation>,
-        optionData: sp.SimpleStringToken<PAnnotation>,
-    ) => sp.IRequiredValueHandler<PAnnotation>
-}
+export type Options<PAnnotation> = pt.Dictionary<($: {
+    taggedUnionToken: sp.TTaggedUnionToken<PAnnotation>,
+    optionData: sp.TSimpleStringToken<PAnnotation>,
+}) => sp.IRequiredValueHandler<PAnnotation>>
 
-export type OnInvalidType<PAnnotation> = null | (($: {
-    annotation: Annotation
+export type IOnInvalidType<PAnnotation> = null | (($: {
+    annotation: PAnnotation
 }) => void)
 
 export type ExpectDictionaryParameters<PAnnotation> = {
     onBegin?: ($: {
-        token: sp.OpenObjectToken<PAnnotation>
+        token: sp.TOpenObjectToken<PAnnotation>
     }) => void
     onProperty: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+        token: sp.TSimpleStringToken<PAnnotation>
     }) => sp.IRequiredValueHandler<PAnnotation>
     onEnd?: ($: {
-        annotation: Annotation
+        annotation: PAnnotation
     }) => void
-    onInvalidType?: OnInvalidType<PAnnotation>
+    onInvalidType?: IOnInvalidType<PAnnotation>
     onNull?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+        token: sp.TSimpleStringToken<PAnnotation>
     }) => void
 }
 
-export type ExpectListParameters<PAnnotation> = {
+export type IExpectListParameters<PAnnotation> = {
     onBegin?: ($: {
-        token: sp.OpenArrayToken<PAnnotation>
+        token: sp.TOpenArrayToken<PAnnotation>
     }) => void
     onElement: () => sp.IValueHandler<PAnnotation>
     onEnd?: ($: {
-        annotation: Annotation
+        annotation: PAnnotation
     }) => void
-    onInvalidType?: OnInvalidType<PAnnotation>
+    onInvalidType?: IOnInvalidType<PAnnotation>
     onNull?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+        token: sp.TSimpleStringToken<PAnnotation>
     }) => void
 }
 
-export type ExpectTaggedUnionParameters<PAnnotation> = {
+export type IExpectTaggedUnionParameters<PAnnotation> = {
     options?: Options<PAnnotation>
     onUnexpectedOption?: ($: {
-        taggedUnionToken: sp.TaggedUnionToken<PAnnotation>
-        optionToken: sp.SimpleStringToken<PAnnotation>
+        taggedUnionToken: sp.TTaggedUnionToken<PAnnotation>
+        optionToken: sp.TSimpleStringToken<PAnnotation>
     }) => void
     onMissingOption?: () => void
-    onInvalidType?: OnInvalidType<PAnnotation>
+    onInvalidType?: IOnInvalidType<PAnnotation>
     onNull?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+        token: sp.TSimpleStringToken<PAnnotation>
     }) => void
 }
 
 export type ExpectVerboseGroupParameters<PAnnotation> = {
-    properties?: ExpectedProperties<PAnnotation>
-    onBegin?: ($: {
-        token: sp.OpenObjectToken<PAnnotation>
+    readonly "properties"?: IExpectedProperties<PAnnotation>
+    readonly "onBegin"?: ($: {
+        readonly "token": sp.TOpenObjectToken<PAnnotation>
     }) => void
-    onEnd?: ($: {
-        hasErrors: boolean
-        annotation: Annotation
+    readonly "onEnd"?: ($: {
+        readonly "hasErrors": boolean
+        readonly "annotation": PAnnotation
     }) => void
-    onUnexpectedProperty?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+    readonly "onUnexpectedProperty"?: ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
     }) => sp.IRequiredValueHandler<PAnnotation>
-    onInvalidType?: OnInvalidType<PAnnotation>
-    onNull?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+    readonly "onInvalidType"?: IOnInvalidType<PAnnotation>
+    readonly "onNull"?: ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
     }) => void
 }
 
-export type ExpectStringParameters<PAnnotation> = {
-    callback: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+export type IExpectStringParameters<PAnnotation> = {
+    readonly "callback": ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
     }) => void
-    onInvalidType?: OnInvalidType<PAnnotation>
-    onNull?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
-    }) => void
-}
-
-export type ExpectQuotedStringParameters<PAnnotation> = {
-    callback: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
-    }) => void
-    onInvalidType?: OnInvalidType<PAnnotation>
-    onNull?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
-    }) => void
-    warningOnly?: boolean
-}
-
-export type ExpectNonwrappedStringParameters<PAnnotation> = {
-    callback: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
-    }) => void
-    onInvalidType?: OnInvalidType<PAnnotation>
-    onNull?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
-    }) => void
-    warningOnly?: boolean
-}
-
-export type ExpectShorthandGroupParameters<PAnnotation> = {
-    elements?: ExpectedElements<PAnnotation>
-    onBegin?: ($: {
-        token: sp.OpenArrayToken<PAnnotation>
-    }) => void
-    onEnd?: ($: {
-        annotation: Annotation
-    }) => void
-    onInvalidType?: OnInvalidType<PAnnotation>
-    onNull?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+    readonly "onInvalidType"?: IOnInvalidType<PAnnotation>
+    readonly "onNull"?: ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
     }) => void
 }
 
-export type ExpectGroupParameters<PAnnotation> = {
-    properties?: ExpectedProperties<PAnnotation>
-    elements?: ExpectedElements<PAnnotation>
-    onTypeBegin?: ($: {
-        token: sp.OpenObjectToken<PAnnotation>
+export type IExpectQuotedStringParameters<PAnnotation> = {
+    readonly "callback": ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
     }) => void
-    onTypeEnd?: ($: {
-        hasErrors: boolean
-        annotation: Annotation
+    readonly "onInvalidType"?: IOnInvalidType<PAnnotation>
+    readonly "onNull"?: ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
     }) => void
-    onUnexpectedProperty?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+    readonly "warningOnly"?: boolean
+}
+
+export type IExpectNonwrappedStringParameters<PAnnotation> = {
+    readonly "callback": ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
+    }) => void
+    readonly "onInvalidType"?: IOnInvalidType<PAnnotation>
+    readonly "onNull"?: ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
+    }) => void
+    readonly "warningOnly"?: boolean
+}
+
+export type IExpectShorthandGroupParameters<PAnnotation> = {
+    readonly "elements"?: IExpectedElements<PAnnotation>
+    readonly "onBegin"?: ($: {
+        readonly "token": sp.TOpenArrayToken<PAnnotation>
+    }) => void
+    readonly "onEnd"?: ($: {
+        readonly "annotation": PAnnotation
+    }) => void
+    readonly "onInvalidType"?: IOnInvalidType<PAnnotation>
+    readonly "onNull"?: ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
+    }) => void
+}
+
+export type IExpectGroupParameters<PAnnotation> = {
+    readonly "properties"?: IExpectedProperties<PAnnotation>
+    readonly "elements"?: IExpectedElements<PAnnotation>
+    readonly "onTypeBegin"?: ($: {
+        readonly "token": sp.TOpenObjectToken<PAnnotation>
+    }) => void
+    readonly "onTypeEnd"?: ($: {
+        readonly "hasErrors": boolean
+        readonly "annotation": PAnnotation
+    }) => void
+    readonly "onUnexpectedProperty"?: ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
     }) => sp.IRequiredValueHandler<PAnnotation>
-    onShorthandGroupBegin?: ($: {
-        token: sp.OpenArrayToken<PAnnotation>
+    readonly "onShorthandGroupBegin"?: ($: {
+        readonly "token": sp.TOpenArrayToken<PAnnotation>
     }) => void
-    onShorthandGroupEnd?: ($: {
-        annotation: Annotation
+    readonly "onShorthandGroupEnd"?: ($: {
+        readonly "annotation": PAnnotation
     }) => void
-    onInvalidType?: OnInvalidType<PAnnotation>
-    onNull?: ($: {
-        token: sp.SimpleStringToken<PAnnotation>
+    readonly "onInvalidType"?: IOnInvalidType<PAnnotation>
+    readonly "onNull"?: ($: {
+        readonly "token": sp.TSimpleStringToken<PAnnotation>
     }) => void
 }
-export type IExpectContext<PAnnotation> = {
-    expectSimpleString($: ExpectStringParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
-    expectQuotedString($: ExpectQuotedStringParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
-    expectNonWrappedString($: ExpectNonwrappedStringParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
-    expectDictionary($: ExpectDictionaryParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
-    expectVerboseGroup($: ExpectVerboseGroupParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
-    expectList($: ExpectListParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
-    expectShorthandGroup($: ExpectShorthandGroupParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
-    expectGroup($: ExpectGroupParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
-    expectTaggedUnion($: ExpectTaggedUnionParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
 
+
+export type XExpectContext<PAnnotation> = {
+    expectSimpleString($i: IExpectStringParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
+    expectQuotedString($i: IExpectQuotedStringParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
+    expectNonWrappedString($i: IExpectNonwrappedStringParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
+    expectDictionary($i: ExpectDictionaryParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
+    expectVerboseGroup($i: ExpectVerboseGroupParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
+    expectList($i: IExpectListParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
+    expectShorthandGroup($i: IExpectShorthandGroupParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
+    expectGroup($i: IExpectGroupParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
+    expectTaggedUnion($i: IExpectTaggedUnionParameters<PAnnotation>): sp.IValueHandler<PAnnotation>
 }

@@ -1,3 +1,3 @@
 
-export { createExpectContext } from "./createExpectContext"
-export { createExpectIssueMessage } from "./createExpectIssueMessage"
+export { createExpectContext } from "./createExpectContext.p"
+export { createExpectIssueMessage } from "./createExpectIssueMessage.p"

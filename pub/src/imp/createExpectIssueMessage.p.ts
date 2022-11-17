@@ -2,9 +2,9 @@ import * as pl from "pareto-core-lib"
 
 import * as api from "../interface"
 
-import { printExpectedValue, printExpectedValueType } from "./printExpectedValue"
+import { printExpectedValue, printExpectedValueType } from "./printExpectedValue.p"
 
-export const createExpectIssueMessage: api.CreateExpectIssueMessage = ($) => {
+export const createExpectIssueMessage: api.CreateExpectIssueMessage = ($, $d) => {
     const $0 = $
     switch ($0.issue[0]) {
         case "array is not a list": {
@@ -38,7 +38,10 @@ export const createExpectIssueMessage: api.CreateExpectIssueMessage = ($) => {
         case "unexpected property": {
             const $ = $0.issue[1]
 
-            return `unexpected property: '${$["found key"]}'. Choose from ${ps.getKeysAsString($["valid keys"], 20)}`
+            return `unexpected property: '${$["found key"]}'. Choose from ${$d.getKeysAsString({
+                dictionary: $["valid keys"],
+                separator: ", "
+            })}`
         }
         case "duplicate entry": {
             const $ = $0.issue[1]
@@ -47,7 +50,7 @@ export const createExpectIssueMessage: api.CreateExpectIssueMessage = ($) => {
         case "expected token": {
             const $ = $0.issue[1]
             const val = ((): string => {
-                switch ($.token) {
+                switch ($.token[0]) {
                     case "open angle bracket": {
                         return '<'
                     }
@@ -96,11 +99,17 @@ export const createExpectIssueMessage: api.CreateExpectIssueMessage = ($) => {
         }
         case "elements missing": {
             const $ = $0.issue[1]
-            return `${ps.getNumberOfKeysAsString($.names)} missing element(s): ${ps.getKeysAsString($.names, 20)}`
+            return `${$d.getNumberOfKeysAsString($.names)} missing element(s): ${$d.getKeysAsString({
+                dictionary:$.names,
+                separator: ", "
+            })}`
         }
         case "unknown option": {
             const $ = $0.issue[1]
-            return `unknown option '${$.found}', choose from ${ps.getKeysAsString($["valid options"], 20)} `
+            return `unknown option '${$.found}', choose from ${$d.getKeysAsString({
+                dictionary: $["valid options"],
+                separator: ", "
+            })} `
         }
         default:
             return pl.au($0.issue[0])

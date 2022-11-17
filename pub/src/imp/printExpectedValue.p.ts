@@ -2,8 +2,8 @@ import * as pl from "pareto-core-lib"
 
 import * as inf from "../interface"
 
-export function printExpectedValueType(vt: inf.ExpectedValueType): string {
-    switch (vt) {
+export function printExpectedValueType(vt: inf.TExpectedValueType): string {
+    switch (vt[0]) {
         case "array": {
             return `an array ([] or <>)`
         }
@@ -57,6 +57,6 @@ export function printExpectedValueType(vt: inf.ExpectedValueType): string {
     }
 }
 
-export function printExpectedValue(vt: inf.ExpectedValue): string {
+export function printExpectedValue(vt: inf.TExpectedValue): string {
     return `${printExpectedValueType(vt.type)}${vt["null allowed"] ? 'or null' : ''}`
 }

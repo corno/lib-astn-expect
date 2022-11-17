@@ -1,60 +1,60 @@
 import * as pt from "pareto-core-types"
 
-import { ExpectedValue, ExpectedValueType } from "./ExpectedValue"
+import { TExpectedValue, TExpectedValueType } from "./ExpectedValue.p"
 
-export type ExpectedToken =
-| "close angle bracket"
-| "close bracket"
-| "close curly"
-| "close paren"
-| "open angle bracket"
-| "open bracket"
-| "open curly"
-| "open paren"
+export type TExpectedToken =
+    | ["close angle bracket", null]
+    | ["close bracket", null]
+    | ["close curly", null]
+    | ["close paren", null]
+    | ["open angle bracket", null]
+    | ["open bracket", null]
+    | ["open curly", null]
+    | ["open paren", null]
 
 
-export type ExpectIssue =
-| ["array is not a list", { }]
-| ["array is not a shorthand group", { }]
+export type TExpectIssue =
+    | ["array is not a list", null]
+    | ["array is not a shorthand group", null]
 
-| ["object is not a verbose group", { }]
+    | ["object is not a verbose group", null]
 
-| ["object is not a dictionary", { }]
-| ["invalid value type", {
-    found: ExpectedValueType
-    expected: ExpectedValue
-}]
-| ["invalid string", {
-    found: string
-    expected: ExpectedValue
-}]
-| ["expected token", {
-    token: ExpectedToken
-    found: string
-}]
-| ["duplicate entry", {
-    key: string
-}]
-| ["duplicate property", {
-    name: string
-}]
-| ["missing property", {
-    name: string
-}]
-| ["unexpected property", {
-    "found key": string
-    "valid keys": pt.Dictionary<null>
-}]
-| ["not a valid number", {
-    value: string
-}]
-| ["string is not quoted", { }]
-| ["string should not have quotes or apostrophes", { }]
-| ["superfluous element", { }]
-| ["elements missing", {
-    names: pt.Dictionary<null>
-}]
-| ["unknown option", {
-    "found": string
-    "valid options": pt.Dictionary<null>
-}]
+    | ["object is not a dictionary", null]
+    | ["invalid value type", {
+        readonly "found": TExpectedValueType
+        readonly "expected": TExpectedValue
+    }]
+    | ["invalid string", {
+        readonly "found": string
+        readonly "expected": TExpectedValue
+    }]
+    | ["expected token", {
+        readonly "token": TExpectedToken
+        readonly "found": string
+    }]
+    | ["duplicate entry", {
+        readonly "key": string
+    }]
+    | ["duplicate property", {
+        readonly "name": string
+    }]
+    | ["missing property", {
+        readonly "name": string
+    }]
+    | ["unexpected property", {
+        readonly "found key": string
+        readonly "valid keys": pt.Dictionary<null>
+    }]
+    | ["not a valid number", {
+        readonly "value": string
+    }]
+    | ["string is not quoted", null]
+    | ["string should not have quotes or apostrophes", null]
+    | ["superfluous element", null]
+    | ["elements missing", {
+        readonly "names": pt.Dictionary<null>
+    }]
+    | ["unknown option", {
+        readonly "found": string
+        readonly "valid options": pt.Dictionary<null>
+    }]

@@ -1,5 +1,5 @@
-export * from "./interfaces/IExpectContext"
-export * from "./types/ExpectIssue"
-export * from "./types/ExpectedValue"
+export * from "./interfaces/IExpectContext.p"
+export * from "./types/ExpectIssue.p"
+export * from "./types/ExpectedValue.p"
 
-export * from "./tbd"
+export * from "./tbd.p"

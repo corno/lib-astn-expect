@@ -1,5 +1,4 @@
-/* eslint
-*/
+
 import * as pl from "pareto-core-lib"
 import * as pm from "pareto-core-state"
 import * as pw from "pareto-core-raw"
@@ -8,119 +7,119 @@ import * as th from "api-astn-handlers"
 import * as uglyStuff from "api-pareto-ugly-stuff"
 
 import * as api from "../interface"
-import { createDummyValueHandler } from "./dummyHandlers"
-import { IExpectContext } from "../interface"
+import { createDummyValueHandler } from "./dummyHandlers.p"
+import { XExpectContext } from "../interface"
 
 interface ICreateContext<PAnnotation> {
     createDictionaryHandler(
         onEntry: ($: {
-            token: th.SimpleStringToken<PAnnotation>
+            token: th.TSimpleStringToken<PAnnotation>
         }) => th.IRequiredValueHandler<PAnnotation>,
         onBegin?: ($: {
-            token: th.OpenObjectToken<PAnnotation>
+            token: th.TOpenObjectToken<PAnnotation>
         }) => void,
         onEnd?: ($: {
-            annotation: Annotation
+            annotation: PAnnotation
         }) => void,
     ): th.OnObject<PAnnotation>
     createVerboseGroupHandler(
-        expectedProperties?: api.ExpectedProperties<PAnnotation>,
+        expectedProperties?: api.IExpectedProperties<PAnnotation>,
         onBegin?: ($: {
-            token: th.OpenObjectToken<PAnnotation>
+            token: th.TOpenObjectToken<PAnnotation>
         }) => void,
         onEnd?: ($: {
             hasErrors: boolean
-            annotation: Annotation
+            annotation: PAnnotation
         }) => void,
         onUnexpectedProperty?: ($: {
-            token: th.SimpleStringToken<PAnnotation>
+            token: th.TSimpleStringToken<PAnnotation>
         }) => th.IRequiredValueHandler<PAnnotation>,
     ): th.OnObject<PAnnotation>
     createShorthandGroupHandler(
-        expectedElements?: api.ExpectedElements<PAnnotation>,
+        expectedElements?: api.IExpectedElements<PAnnotation>,
         onBegin?: ($: {
-            token: th.OpenArrayToken<PAnnotation>
+            token: th.TOpenArrayToken<PAnnotation>
         }) => void,
         onEnd?: ($: {
-            annotation: Annotation
+            annotation: PAnnotation
         }) => void
     ): th.OnArray<PAnnotation>
     createListHandler(
         onElement: () => th.IValueHandler<PAnnotation>,
         onBegin?: ($: {
-            token: th.OpenArrayToken<PAnnotation>
+            token: th.TOpenArrayToken<PAnnotation>
         }) => void,
         onEnd?: ($: {
-            annotation: Annotation
+            annotation: PAnnotation
         }) => void,
     ): th.OnArray<PAnnotation>
     createTaggedUnionHandler(
         options?: api.Options<PAnnotation>,
         onUnexpectedOption?: ($: {
-            taggedUnionToken: th.TaggedUnionToken<PAnnotation>
-            optionToken: th.SimpleStringToken<PAnnotation>
+            taggedUnionToken: th.TTaggedUnionToken<PAnnotation>
+            optionToken: th.TSimpleStringToken<PAnnotation>
         }) => void,
         onMissingOption?: () => void,
     ): th.OnTaggedUnion<PAnnotation>
     createUnexpectedSimpleStringHandler(
-        expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<PAnnotation>,
+        expected: api.TExpectedValue,
+        onInvalidType?: api.IOnInvalidType<PAnnotation>,
         onNull?: ($: {
-            token: th.SimpleStringToken<PAnnotation>
+            token: th.TSimpleStringToken<PAnnotation>
         }) => void,
     ): th.OnSimpleString<PAnnotation>
     createUnexpectedMultilineStringHandler(
-        expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<PAnnotation>,
+        expected: api.TExpectedValue,
+        onInvalidType?: api.IOnInvalidType<PAnnotation>,
     ): th.OnMultilineString<PAnnotation>
     createNullHandler(
-        expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<PAnnotation>,
+        expected: api.TExpectedValue,
+        onInvalidType?: api.IOnInvalidType<PAnnotation>,
     ): th.OnSimpleString<PAnnotation>
     createUnexpectedTaggedUnionHandler(
-        expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<PAnnotation>,
+        expected: api.TExpectedValue,
+        onInvalidType?: api.IOnInvalidType<PAnnotation>,
     ): th.OnTaggedUnion<PAnnotation>
     createUnexpectedObjectHandler(
-        expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<PAnnotation>,
+        expected: api.TExpectedValue,
+        onInvalidType?: api.IOnInvalidType<PAnnotation>,
     ): th.OnObject<PAnnotation>
     createUnexpectedArrayHandler(
-        expected: api.ExpectedValue,
-        onInvalidType?: api.OnInvalidType<PAnnotation>,
+        expected: api.TExpectedValue,
+        onInvalidType?: api.IOnInvalidType<PAnnotation>,
     ): th.OnArray<PAnnotation>
 }
 
 function createCreateContext<PAnnotation>(
     $: {
-        duplicateEntrySeverity: api.ExpectSeverity,
-        onDuplicateEntry: api.OnDuplicateEntry,
+        duplicateEntrySeverity: api.TExpectSeverity,
+        onDuplicateEntry: api.TOnDuplicateEntry,
     },
     $i: {
         issueHandler: (
             $: {
-                issue: api.ExpectIssue
-                severity: api.DiagnosticSeverity
-                annotation: Annotation
+                issue: api.TExpectIssue
+                severity: api.TDiagnosticSeverity
+                annotation: PAnnotation
             }
         ) => void,
     },
     $d: {
-        push: uglyStuff.Push,
-        includes: uglyStuff.Includes,
-        getElement: uglyStuff.GetElement,
-        arrayLength: uglyStuff.ArrayLength,
+        //push: uglyStuff.Push,
+        includes: uglyStuff.FIncludes,
+        getElement: uglyStuff.FGetElement,
+        arrayLength: uglyStuff.FArrayLength,
     },
 ): ICreateContext<PAnnotation> {
     const onDuplicateEntry = $.onDuplicateEntry
-    function raiseWarning(issue: api.ExpectIssue, annotation: Annotation): void {
+    function raiseWarning(issue: api.TExpectIssue, annotation: PAnnotation): void {
         $i.issueHandler({
             issue: issue,
             severity: ["warning", null],
             annotation: annotation,
         })
     }
-    function raiseError(issue: api.ExpectIssue, annotation: Annotation): void {
+    function raiseError(issue: api.TExpectIssue, annotation: PAnnotation): void {
         $i.issueHandler({
             issue: issue,
             severity: ["error", null],
@@ -334,7 +333,7 @@ function createCreateContext<PAnnotation>(
                             const builder = pm.createDictionaryBuilder<null>(
                                 onDuplicateEntry,
                                 (key) => {
-                                    raiseError(["duplicate entry", { key: key}], $$.token.annotation)
+                                    raiseError(["duplicate entry", { key: key }], $$.token.annotation)
                                 }
                             )
                             pw.wrapRawArray(elements).forEach(($) => {
@@ -433,7 +432,7 @@ function createCreateContext<PAnnotation>(
                         })
                     } else {
                         raiseError(["invalid value type", {
-                            found: "string",
+                            found: ["string", null],
                             expected: expected,
 
                         }], svData.token.annotation)
@@ -452,7 +451,7 @@ function createCreateContext<PAnnotation>(
                     })
                 } else {
                     raiseError(["invalid value type", {
-                        found: "string",
+                        found: ["string", null],
                         expected: expected,
 
                     }], svData.token.annotation)
@@ -469,7 +468,7 @@ function createCreateContext<PAnnotation>(
                         annotation: svData.token.annotation,
                     })
                 } else {
-                    raiseError(["invalid value type", { found: "string", expected: expected }], svData.token.annotation)
+                    raiseError(["invalid value type", { found: ["string", null], expected: expected }], svData.token.annotation)
                 }
             }
         },
@@ -485,7 +484,7 @@ function createCreateContext<PAnnotation>(
                                 annotation: $.token.annotation,
                             })
                         } else {
-                            raiseError(["invalid value type", { found: "tagged union", expected: expected }], $.token.annotation)
+                            raiseError(["invalid value type", { found: ["tagged union", null], expected: expected }], $.token.annotation)
                         }
                         return createDummyRequiredValueHandler()
                     },
@@ -505,7 +504,7 @@ function createCreateContext<PAnnotation>(
                     })
                 } else {
                     raiseError(
-                        ["invalid value type", { found: "object", expected: expected }],
+                        ["invalid value type", { found: ["object", null], expected: expected }],
                         $.token.annotation,
                     )
                 }
@@ -532,7 +531,7 @@ function createCreateContext<PAnnotation>(
                     })
                 } else {
                     raiseError(
-                        ["invalid value type", { found: "array", expected: expected }],
+                        ["invalid value type", { found: ["array", null], expected: expected }],
                         $.token.annotation
                     )
                 }
@@ -549,24 +548,24 @@ function createCreateContext<PAnnotation>(
 
 export function createExpectContext<PAnnotation>(
     $: {
-        duplicateEntrySeverity: api.ExpectSeverity
-        onDuplicateEntry: api.OnDuplicateEntry
+        duplicateEntrySeverity: api.TExpectSeverity
+        onDuplicateEntry: api.TOnDuplicateEntry
     },
     $i: {
-        issueHandler: api.IssueHandler<PAnnotation>
-        onInvalidType: api.OnInvalidType<PAnnotation>
+        issueHandler: api.IIssueHandler<PAnnotation>
+        onInvalidType: api.IOnInvalidType<PAnnotation>
     },
     $d: {
-        push: uglyStuff.Push,
-        includes: uglyStuff.Includes,
-        getElement: uglyStuff.GetElement,
-        arrayLength: uglyStuff.ArrayLength,
+        //push: uglyStuff.Push,
+        includes: uglyStuff.FIncludes,
+        getElement: uglyStuff.FGetElement,
+        arrayLength: uglyStuff.FArrayLength,
     },
-): IExpectContext<PAnnotation> {
+): XExpectContext<PAnnotation> {
 
     function raiseError(
-        issue: api.ExpectIssue,
-        annotation: Annotation,
+        issue: api.TExpectIssue,
+        annotation: PAnnotation,
     ): void {
         $i.issueHandler({
             issue: issue,
@@ -575,8 +574,8 @@ export function createExpectContext<PAnnotation>(
         })
     }
     function raiseWarning(
-        issue: api.ExpectIssue,
-        annotation: Annotation,
+        issue: api.TExpectIssue,
+        annotation: PAnnotation,
     ): void {
         $i.issueHandler({
             issue: issue,
@@ -592,11 +591,11 @@ export function createExpectContext<PAnnotation>(
     )
 
     function expectSimpleStringImp(
-        expected: api.ExpectedValue,
+        expected: api.TExpectedValue,
         callback: ($: {
-            token: th.SimpleStringToken<PAnnotation>
+            token: th.TSimpleStringToken<PAnnotation>
         }) => void,
-        onInvalidType?: api.OnInvalidType<PAnnotation>,
+        onInvalidType?: api.IOnInvalidType<PAnnotation>,
     ): th.IValueHandler<PAnnotation> {
         return {
             array: createContext.createUnexpectedArrayHandler(expected, onInvalidType),
@@ -610,15 +609,15 @@ export function createExpectContext<PAnnotation>(
     return {
         expectSimpleString: ($) => {
 
-            const expectValue: api.ExpectedValue = {
-                "type": "string",
+            const expectValue: api.TExpectedValue = {
+                "type": ["string", null],
                 "null allowed": $.onNull !== undefined,
             }
             return expectSimpleStringImp(expectValue, $.callback, $i.onInvalidType)
         },
         expectQuotedString: ($) => {
-            const expectValue: api.ExpectedValue = {
-                "type": "quoted string",
+            const expectValue: api.TExpectedValue = {
+                "type": ["quoted string", null],
                 "null allowed": $.onNull !== undefined,
             }
             return expectSimpleStringImp(
@@ -652,8 +651,8 @@ export function createExpectContext<PAnnotation>(
             )
         },
         expectNonWrappedString: ($) => {
-            const expectValue: api.ExpectedValue = {
-                "type": "nonwrapped string",
+            const expectValue: api.TExpectedValue = {
+                "type": ["nonwrapped string", null],
                 "null allowed": $.onNull !== undefined,
             }
             return expectSimpleStringImp(
@@ -688,8 +687,8 @@ export function createExpectContext<PAnnotation>(
         },
         expectDictionary: ($) => {
 
-            const expectValue: api.ExpectedValue = {
-                "type": "dictionary",
+            const expectValue: api.TExpectedValue = {
+                "type": ["dictionary", null],
                 "null allowed": false,
             }
             return {
@@ -702,8 +701,8 @@ export function createExpectContext<PAnnotation>(
         },
         expectVerboseGroup: ($) => {
 
-            const expectValue: api.ExpectedValue = {
-                "type": "verbose group",
+            const expectValue: api.TExpectedValue = {
+                "type": ["verbose group", null],
                 "null allowed": $.onNull !== undefined,
             }
             return {
@@ -721,8 +720,8 @@ export function createExpectContext<PAnnotation>(
         },
         expectList: ($) => {
 
-            const expectValue: api.ExpectedValue = {
-                "type": "list",
+            const expectValue: api.TExpectedValue = {
+                "type": ["list", null],
                 "null allowed": false,
             }
             return {
@@ -735,8 +734,8 @@ export function createExpectContext<PAnnotation>(
         },
         expectShorthandGroup: ($) => {
 
-            const expectValue: api.ExpectedValue = {
-                "type": "shorthand group",
+            const expectValue: api.TExpectedValue = {
+                "type" ["shorthand group", null],
                 "null allowed": $.onNull !== undefined,
             }
             return {
@@ -750,8 +749,8 @@ export function createExpectContext<PAnnotation>(
 
         expectGroup: ($) => {
 
-            const expectValue: api.ExpectedValue = {
-                "type": "type or shorthand group",
+            const expectValue: api.TExpectedValue = {
+                "type": ["type or shorthand group", null],
                 "null allowed": $.onNull !== undefined,
             }
             return {
@@ -769,8 +768,8 @@ export function createExpectContext<PAnnotation>(
         },
         expectTaggedUnion: ($) => {
 
-            const expectValue: api.ExpectedValue = {
-                "type": "tagged union",
+            const expectValue: api.TExpectedValue = {
+                "type": ["tagged union", null],
                 "null allowed": $.onNull !== undefined,
             }
             return {
