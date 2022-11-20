@@ -28,6 +28,6 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.18.0",
-  "interface-fingerprint": "89c64b30c446226ff8d3dad85d3355821045653e",
-  "content-fingerprint": "ef6f19372540efb15b283f73618a2a43c786602e"
+  "interface-fingerprint": "dff5d22fa3e7cc541d4b531dedffc332946c9272",
+  "content-fingerprint": "a1dd2ea2e1b3cb6a17e790f537930258f9b0e658"
 }

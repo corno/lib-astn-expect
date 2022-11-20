@@ -1,7 +1,7 @@
 
 import * as uglystuff from "res-pareto-ugly-stuff"
 
-import * as test from "../imp"
+import * as test from "../implementation"
 
 
 test.createTestContext(
