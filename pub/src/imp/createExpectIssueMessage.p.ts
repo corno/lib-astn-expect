@@ -38,10 +38,7 @@ export const createExpectIssueMessage: api.CreateExpectIssueMessage = ($, $d) =>
         case "unexpected property": {
             const $ = $0.issue[1]
 
-            return `unexpected property: '${$["found key"]}'. Choose from ${$d.getKeysAsString({
-                dictionary: $["valid keys"],
-                separator: ", "
-            })}`
+            return `unexpected property: '${$["found key"]}'. Choose from ${$d.getKeysAsString($["valid keys"])}`
         }
         case "duplicate entry": {
             const $ = $0.issue[1]
@@ -99,17 +96,11 @@ export const createExpectIssueMessage: api.CreateExpectIssueMessage = ($, $d) =>
         }
         case "elements missing": {
             const $ = $0.issue[1]
-            return `${$d.getNumberOfKeysAsString($.names)} missing element(s): ${$d.getKeysAsString({
-                dictionary:$.names,
-                separator: ", "
-            })}`
+            return `${$d.getNumberOfKeysAsString($.names)} missing element(s): ${$d.getKeysAsString($.names)}`
         }
         case "unknown option": {
             const $ = $0.issue[1]
-            return `unknown option '${$.found}', choose from ${$d.getKeysAsString({
-                dictionary: $["valid options"],
-                separator: ", "
-            })} `
+            return `unknown option '${$.found}', choose from ${$d.getKeysAsString($["valid options"])} `
         }
         default:
             return pl.au($0.issue[0])

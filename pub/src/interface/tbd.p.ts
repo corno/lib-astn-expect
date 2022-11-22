@@ -1,7 +1,5 @@
+import * as pt from "pareto-core-types"
 import * as uglyStuff from "api-pareto-ugly-stuff"
-import * as tostring from "api-pareto-tostring"
-
-
 
 import { XExpectContext, IOnInvalidType } from "./interfaces/IExpectContext.p"
 import { TExpectIssue } from "./types/ExpectIssue.p"
@@ -52,7 +50,7 @@ export type CreateExpectIssueMessage_Data = {
 export type CreateExpectIssueMessage = (
     $: CreateExpectIssueMessage_Data,
     $d: {
-        getKeysAsString: tostring.FGetKeysAsString
-        getNumberOfKeysAsString: tostring.FGetNumberOfKeysAsString
+        getKeysAsString: ($: pt.Dictionary<null>) => string
+        getNumberOfKeysAsString: ($: pt.Dictionary<null>) => string
     }
 ) => string
