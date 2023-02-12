@@ -1,4 +1,4 @@
-import * as pt from "pareto-core-types"
+import * as pt from 'pareto-core-types'
 import * as uglyStuff from "api-pareto-ugly-stuff"
 
 import { XExpectContext, IOnInvalidType } from "./interfaces/IExpectContext.p"
