@@ -10,7 +10,7 @@ import * as mtest from "lib-pareto-test"
 
 export const $$: api.CgetTestSet = () => {
 
-        const builder = pm.createUnsafeDictionaryBuilder<mtest.TTestElement>(  )
+        const builder = pm.createUnsafeDictionaryBuilder<mtest.T.TestElement>(  )
         function createTest(name: string, actual: string, expected: string) {
             builder.add(name, {
                 type: ["test", {

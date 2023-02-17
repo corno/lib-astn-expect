@@ -1,16 +1,5 @@
 import * as pd from 'pareto-core-data'
 
-import {
-    null_,
-    array,
-    string,
-    reference,
-    boolean,
-    nested,
-    typeReference,
-    dictionary, group, member, taggedUnion, types, func, data
-} from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
-
 import { definitionReference, constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/moduleDefinition/shorthands.p"
 
 import * as mmoduleDefinition from "lib-pareto-typescript-project/dist/submodules/moduleDefinition"
@@ -26,6 +15,17 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
             //"common": "glo-pareto-common",
         }),
         'algorithms': d({
+            "expectDictionary": algorithm(definitionReference("ExpectDictionary")),
+            "expectList": algorithm(definitionReference("ExpectList")),
+            "expectArray": algorithm(definitionReference("ExpectArray")),
+            "expectArrayOrObject": algorithm(definitionReference("ExpectArrayOrObject")),
+            "expectObject": algorithm(definitionReference("ExpectObject")),
+            "expectMultilineString": algorithm(definitionReference("ExpectMultilineString")),
+            "expectSimpleString": algorithm(definitionReference("ExpectSimpleString")),
+            "expectQuotedString": algorithm(definitionReference("ExpectQuotedString")),
+            "expectApostrophedString": algorithm(definitionReference("ExpectApostrophedString")),
+            "expectTaggedUnion": algorithm(definitionReference("ExpectTaggedUnion")),
+            "createUnexpectedHandler": algorithm(definitionReference("CreateUnexpectedHandler")),
         })
     },
 }
