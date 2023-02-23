@@ -1,75 +1,75 @@
 // import * as pl from 'pareto-core-lib'
 
-// import * as api from "../interface"
+// import * as mapi from "../interface"
 
 // import { printExpectedValue, printExpectedValueType } from "./printExpectedValue.p"
 
 // export const createExpectIssueMessage: api.CreateExpectIssueMessage = ($, $d) => {
 //     const $0 = $
 //     switch ($0.issue[0]) {
-//         case "array is not a list": {
+//         case 'array is not a list': {
 //             return `expected a list: [ ]`
 //         }
-//         case "array is not a shorthand group": {
+//         case 'array is not a shorthand group': {
 //             return `expected a shorthand group: < >`
 //         }
-//         case "object is not a dictionary": {
+//         case 'object is not a dictionary': {
 //             return `expected a dictionary: { }`
 //         }
-//         case "object is not a verbose group": {
+//         case 'object is not a verbose group': {
 //             return `expected a verbose group: ( )`
 //         }
-//         case "invalid value type": {
+//         case 'invalid value type': {
 //             const $ = $0.issue[1]
 //             return `expected ${printExpectedValue($.expected)} but found ${printExpectedValueType($.found)}`
 //         }
-//         case "invalid string": {
+//         case 'invalid string': {
 //             const $ = $0.issue[1]
 //             return `expected '${printExpectedValue($.expected)}' but found '${$.found}'`
 //         }
-//         case "duplicate property": {
+//         case 'duplicate property': {
 //             const $ = $0.issue[1]
 //             return `duplicate property: '${$.name}'`
 //         }
-//         case "missing property": {
+//         case 'missing property': {
 //             const $ = $0.issue[1]
 //             return `missing property: '${$.name}'`
 //         }
-//         case "unexpected property": {
+//         case 'unexpected property': {
 //             const $ = $0.issue[1]
 
 //             return `unexpected property: '${$["found key"]}'. Choose from ${$d.getKeysAsString($["valid keys"])}`
 //         }
-//         case "duplicate entry": {
+//         case 'duplicate entry': {
 //             const $ = $0.issue[1]
 //             return `duplicate entry: '${$.key}'`
 //         }
-//         case "expected token": {
+//         case 'expected token': {
 //             const $ = $0.issue[1]
 //             const val = ((): string => {
 //                 switch ($.token[0]) {
-//                     case "open angle bracket": {
+//                     case 'open angle bracket': {
 //                         return '<'
 //                     }
-//                     case "open bracket": {
+//                     case 'open bracket': {
 //                         return '['
 //                     }
-//                     case "close bracket": {
+//                     case 'close bracket': {
 //                         return ']'
 //                     }
-//                     case "close angle bracket": {
+//                     case 'close angle bracket': {
 //                         return '>'
 //                     }
-//                     case "open curly": {
+//                     case 'open curly': {
 //                         return '{'
 //                     }
-//                     case "close curly": {
+//                     case 'close curly': {
 //                         return '}'
 //                     }
-//                     case "open paren": {
+//                     case 'open paren': {
 //                         return '('
 //                     }
-//                     case "close paren": {
+//                     case 'close paren': {
 //                         return ')'
 //                     }
 //                     default:
@@ -78,27 +78,27 @@
 //             })()
 //             return `expected '${val}' but found '${$.found}'`
 //         }
-//         case "not a valid number": {
+//         case 'not a valid number': {
 //             const $ = $0.issue[1]
 //             return `'${$.value}' is not a valid number`
 //         }
-//         case "string is not quoted": {
+//         case 'string is not quoted': {
 //             // const $ = issue[1]
 //             return `not a quoted string`
 //         }
-//         case "string should not have quotes or apostrophes": {
+//         case 'string should not have quotes or apostrophes': {
 //             // const $ = issue[1]
 //             return `a string with quotes or apostrophes`
 //         }
-//         case "superfluous element": {
+//         case 'superfluous element': {
 //             //const $ = issue[1]
 //             return `superfluous element`
 //         }
-//         case "elements missing": {
+//         case 'elements missing': {
 //             const $ = $0.issue[1]
 //             return `${$d.getNumberOfKeysAsString($.names)} missing element(s): ${$d.getKeysAsString($.names)}`
 //         }
-//         case "unknown option": {
+//         case 'unknown option': {
 //             const $ = $0.issue[1]
 //             return `unknown option '${$.found}', choose from ${$d.getKeysAsString($["valid options"])} `
 //         }

@@ -1,8 +1,7 @@
-import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
+import * as mapi from "../api"
 
-export const $$: api.CexpectList = ($, $i) => {
+export const $$: mapi.CexpectList = ($, $i) => {
     return ($) => {
         if ($.token.type[0] !== 'list') {
             $i.unexpected(null)

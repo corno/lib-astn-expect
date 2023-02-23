@@ -1,8 +1,7 @@
-import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
+import * as mapi from "../api"
 
-export const $$: api.CexpectObject = ($, $i) => {
+export const $$: mapi.CexpectObject = ($, $i) => {
     return {
         'array': ($) => {
             return $i.unexpected.array({

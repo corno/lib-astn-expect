@@ -5,18 +5,18 @@
 // import { TExpectIssue } from "./types/ExpectIssue.p"
 
 // export type TExpectSeverity =
-//     | ["warning", null]
-//     | ["error", null]
-//     | ["nothing", null]
+//     | ['warning', null]
+//     | ['error', null]
+//     | ['nothing', null]
 
 // export type TOnDuplicateEntry =
-//     | ["ignore", null]
-//     | ["overwrite", null]
+//     | ['ignore', null]
+//     | ['overwrite', null]
 
 
 // export type TDiagnosticSeverity =
-//     | ["warning", null]
-//     | ["error", null]
+//     | ['warning', null]
+//     | ['error', null]
 
 // export type IIssueHandler<PAnnotation> = (
 //     $: {

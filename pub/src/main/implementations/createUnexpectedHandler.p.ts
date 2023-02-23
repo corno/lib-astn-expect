@@ -1,10 +1,8 @@
-import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
-
+import * as mapi from "../api"
 import * as mh from "glo-astn-handlers"
 
-export const $$: api.CcreateUnexpectedHandler = ($, $i) => {
+export const $$: mapi.CcreateUnexpectedHandler = ($, $i) => {
 
     function createDummyObjectHandler<PAnnotation>(): mh.IObjectHandler<PAnnotation> {
         return {

@@ -1,55 +1,55 @@
 // import * as pl from 'pareto-core-lib'
 
-// import * as inf from "../interface"
+// import * as minf from "../interface"
 
 // export function printExpectedValueType(vt: inf.TExpectedValueType): string {
 //     switch (vt[0]) {
-//         case "array": {
+//         case 'array': {
 //             return `an array ([] or <>)`
 //         }
-//         case "shorthand group": {
+//         case 'shorthand group': {
 //             return `a shorhand type (<>)`
 //         }
-//         case "boolean": {
+//         case 'boolean': {
 //             return `a boolean (true/false)`
 //         }
-//         case "dictionary": {
+//         case 'dictionary': {
 //             return `a dictionary ( {} )`
 //         }
-//         case "list": {
+//         case 'list': {
 //             return `a list ( [] )`
 //         }
-//         case "nothing": {
+//         case 'nothing': {
 //             return `nothing`
 //         }
-//         case "null": {
+//         case 'null': {
 //             return `'null'`
 //         }
-//         case "number": {
+//         case 'number': {
 //             return `a number`
 //         }
-//         case "object": {
+//         case 'object': {
 //             return `an object ( {} or () )`
 //         }
-//         case "string": {
+//         case 'string': {
 //             return `a string (quoted, apostrophed, multiline or non wrapped (including a number, a keyword, a boolean)`
 //         }
-//         case "quoted string": {
+//         case 'quoted string': {
 //             return `a string with quotes`
 //         }
-//         case "nonwrapped string": {
+//         case 'nonwrapped string': {
 //             return `a string without quotes or aposthropes`
 //         }
-//         case "tagged union": {
+//         case 'tagged union': {
 //             return `a tagged union ( | "statename" data )`
 //         }
-//         case "type": {
+//         case 'type': {
 //             return `a type ( () )`
 //         }
-//         case "type or shorthand group": {
+//         case 'type or shorthand group': {
 //             return `a type ( () ) or a shorhand type (<>)`
 //         }
-//         case "verbose group": {
+//         case 'verbose group': {
 //             return `a verbose group ( () )`
 //         }
 //         default:

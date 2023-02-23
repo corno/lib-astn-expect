@@ -1,12 +1,12 @@
 
 import * as pl from 'pareto-core-lib'
-// import * as pm from 'pareto-core-state'
+// import * as ps from 'pareto-core-state'
 // import * as pw from 'pareto-core-raw'
 
-// import * as th from "api-astn-handlers"
-// import * as uglyStuff from "api-pareto-ugly-stuff"
+// import * as mth from "api-astn-handlers"
+// import * as muglyStuff from "api-pareto-ugly-stuff"
 
-// import * as api from "../interface"
+// import * as mapi from "../interface"
 // import { createDummyValueHandler } from "./dummyHandlers.p"
 // import { XExpectContext } from "../interface"
 
@@ -115,14 +115,14 @@ import * as pl from 'pareto-core-lib'
 //     function raiseWarning(issue: api.TExpectIssue, annotation: PAnnotation): void {
 //         $i.issueHandler({
 //             issue: issue,
-//             severity: ["warning", null],
+//             severity: ['warning', null],
 //             annotation: annotation,
 //         })
 //     }
 //     function raiseError(issue: api.TExpectIssue, annotation: PAnnotation): void {
 //         $i.issueHandler({
 //             issue: issue,
-//             severity: ["error", null],
+//             severity: ['error', null],
 //             annotation: annotation,
 //         })
 //     }
@@ -139,7 +139,7 @@ import * as pl from 'pareto-core-lib'
 //             return (data) => {
 
 //                 if (data.token.token.type[0] !== "dictionary") {
-//                     raiseWarning(["object is not a dictionary", null], data.token.annotation)
+//                     raiseWarning(['object is not a dictionary', null], data.token.annotation)
 //                 }
 //                 if (onBegin) {
 //                     onBegin(data)
@@ -150,21 +150,21 @@ import * as pl from 'pareto-core-lib'
 //                         const process = (): th.IRequiredValueHandler<PAnnotation> => {
 //                             if ($d.includes(foundEntries, propertyData.token.token.value)) {
 //                                 switch ($.duplicateEntrySeverity[0]) {
-//                                     case "error":
-//                                         raiseError(["duplicate entry", { key: propertyData.token.token.value }], propertyData.token.annotation)
+//                                     case 'error':
+//                                         raiseError(['duplicate entry', { key: propertyData.token.token.value }], propertyData.token.annotation)
 //                                         break
-//                                     case "nothing":
+//                                     case 'nothing':
 //                                         break
-//                                     case "warning":
-//                                         raiseWarning(["duplicate entry", { key: propertyData.token.token.value }], propertyData.token.annotation)
+//                                     case 'warning':
+//                                         raiseWarning(['duplicate entry', { key: propertyData.token.token.value }], propertyData.token.annotation)
 //                                         break
 //                                     default:
 //                                         pl.au($.duplicateEntrySeverity[0])
 //                                 }
 //                                 switch ($.onDuplicateEntry[0]) {
-//                                     case "ignore":
+//                                     case 'ignore':
 //                                         return createDummyRequiredValueHandler()
-//                                     case "overwrite":
+//                                     case 'overwrite':
 //                                         return onEntry(propertyData)
 //                                     default:
 //                                         return pl.au($.onDuplicateEntry[0])
@@ -194,7 +194,7 @@ import * as pl from 'pareto-core-lib'
 //             return (data) => {
 
 //                 if (data.token.token.type[0] !== "verbose group") {
-//                     raiseWarning(["object is not a verbose group", null], data.token.annotation)
+//                     raiseWarning(['object is not a verbose group', null], data.token.annotation)
 //                 }
 //                 if (onBegin) {
 //                     onBegin(data)
@@ -207,7 +207,7 @@ import * as pl from 'pareto-core-lib'
 //                             const expected = properties[$$.token.token.value]
 //                             if (expected === undefined) {
 //                                 hasErrors = true
-//                                 raiseError(["unexpected property", {
+//                                 raiseError(['unexpected property', {
 //                                     "found key": $$.token.token.value,
 //                                     "valid keys": pw.wrapRawDictionary(properties).map(() => null),
 //                                 }], $$.token.annotation)
@@ -225,21 +225,21 @@ import * as pl from 'pareto-core-lib'
 //                         const process = (): th.IRequiredValueHandler<PAnnotation> => {
 //                             if ($d.includes(foundProperies, $$.token.token.value)) {
 //                                 switch ($.duplicateEntrySeverity[0]) {
-//                                     case "error":
-//                                         raiseError(["duplicate property", { name: $$.token.token.value }], $$.token.annotation)
+//                                     case 'error':
+//                                         raiseError(['duplicate property', { name: $$.token.token.value }], $$.token.annotation)
 //                                         break
-//                                     case "nothing":
+//                                     case 'nothing':
 //                                         break
-//                                     case "warning":
-//                                         raiseWarning(["duplicate property", { name: $$.token.token.value }], $$.token.annotation)
+//                                     case 'warning':
+//                                         raiseWarning(['duplicate property', { name: $$.token.token.value }], $$.token.annotation)
 //                                         break
 //                                     default:
 //                                         return pl.au($.duplicateEntrySeverity[0])
 //                                 }
 //                                 switch ($.onDuplicateEntry[0]) {
-//                                     case "ignore":
+//                                     case 'ignore':
 //                                         return createDummyRequiredValueHandler()
-//                                     case "overwrite":
+//                                     case 'overwrite':
 //                                         return onProperty()
 //                                     default:
 //                                         return pl.au($.onDuplicateEntry[0])
@@ -261,7 +261,7 @@ import * as pl from 'pareto-core-lib'
 //                             if (!$d.includes(foundProperies, epName)) {
 //                                 const ep = properties[epName]
 //                                 if (ep.onNotExists === null) {
-//                                     raiseError(["missing property", { name: epName }], data.token.annotation)//FIX print location properly
+//                                     raiseError(['missing property', { name: epName }], data.token.annotation)//FIX print location properly
 //                                     hasErrors = true
 //                                 } else {
 //                                     ep.onNotExists({
@@ -293,7 +293,7 @@ import * as pl from 'pareto-core-lib'
 //                     onBegin(typeData)
 //                 }
 //                 if (typeData.token.token.type[0] !== "shorthand group") {
-//                     raiseWarning(["array is not a shorthand group", null], typeData.token.annotation)
+//                     raiseWarning(['array is not a shorthand group', null], typeData.token.annotation)
 //                 }
 //                 let index = 0
 //                 return {
@@ -304,23 +304,23 @@ import * as pl from 'pareto-core-lib'
 //                             const dvh = createDummyValueHandler()
 //                             return {
 //                                 object: (data) => {
-//                                     raiseError(["superfluous element", null], data.token.annotation)
+//                                     raiseError(['superfluous element', null], data.token.annotation)
 //                                     return dvh.object(data)
 //                                 },
 //                                 array: (data) => {
-//                                     raiseError(["superfluous element", null], data.token.annotation)
+//                                     raiseError(['superfluous element', null], data.token.annotation)
 //                                     return dvh.array(data)
 //                                 },
 //                                 simpleString: (data) => {
-//                                     raiseError(["superfluous element", null], data.token.annotation)
+//                                     raiseError(['superfluous element', null], data.token.annotation)
 //                                     return dvh.simpleString(data)
 //                                 },
 //                                 multilineString: (data) => {
-//                                     raiseError(["superfluous element", null], data.token.annotation)
+//                                     raiseError(['superfluous element', null], data.token.annotation)
 //                                     return dvh.multilineString(data)
 //                                 },
 //                                 taggedUnion: (data) => {
-//                                     raiseError(["superfluous element", null], data.token.annotation)
+//                                     raiseError(['superfluous element', null], data.token.annotation)
 //                                     return dvh.taggedUnion(data)
 //                                 },
 //                             }
@@ -330,10 +330,10 @@ import * as pl from 'pareto-core-lib'
 //                     },
 //                     onEnd: ($$) => {
 //                         if ($d.arrayLength(elements) - index > 0) {
-//                             const builder = pm.createDictionaryBuilderFIXME<null>(
+//                             const builder = ps.createDictionaryBuilderFIXME<null>(
 //                                 onDuplicateEntry,
 //                                 (key) => {
-//                                     raiseError(["duplicate entry", { key: key }], $$.token.annotation)
+//                                     raiseError(['duplicate entry', { key: key }], $$.token.annotation)
 //                                 }
 //                             )
 //                             pw.wrapRawArray(elements).forEach(($) => {
@@ -364,7 +364,7 @@ import * as pl from 'pareto-core-lib'
 //         ) => {
 //             return (data) => {
 //                 if (data.token.token.type[0] !== "list") {
-//                     raiseWarning(["array is not a list", null], data.token.annotation)
+//                     raiseWarning(['array is not a list', null], data.token.annotation)
 //                 }
 //                 if (onBegin) {
 //                     onBegin(data)
@@ -391,7 +391,7 @@ import * as pl from 'pareto-core-lib'
 
 //                         const optionHandler = options ? options[optionData.token.token.value] : undefined
 //                         if (optionHandler === undefined) {
-//                             raiseError(["unknown option", {
+//                             raiseError(['unknown option', {
 //                                 "found": optionData.token.token.value,
 //                                 "valid options": pw.wrapRawDictionary(options ? options : {}).map($ => null),
 //                             }], optionData.token.annotation)
@@ -431,8 +431,8 @@ import * as pl from 'pareto-core-lib'
 //                             annotation: svData.token.annotation,
 //                         })
 //                     } else {
-//                         raiseError(["invalid value type", {
-//                             found: ["string", null],
+//                         raiseError(['invalid value type', {
+//                             found: ['string', null],
 //                             expected: expected,
 
 //                         }], svData.token.annotation)
@@ -450,8 +450,8 @@ import * as pl from 'pareto-core-lib'
 //                         annotation: svData.token.annotation,
 //                     })
 //                 } else {
-//                     raiseError(["invalid value type", {
-//                         found: ["string", null],
+//                     raiseError(['invalid value type', {
+//                         found: ['string', null],
 //                         expected: expected,
 
 //                     }], svData.token.annotation)
@@ -468,7 +468,7 @@ import * as pl from 'pareto-core-lib'
 //                         annotation: svData.token.annotation,
 //                     })
 //                 } else {
-//                     raiseError(["invalid value type", { found: ["string", null], expected: expected }], svData.token.annotation)
+//                     raiseError(['invalid value type', { found: ['string', null], expected: expected }], svData.token.annotation)
 //                 }
 //             }
 //         },
@@ -484,7 +484,7 @@ import * as pl from 'pareto-core-lib'
 //                                 annotation: $.token.annotation,
 //                             })
 //                         } else {
-//                             raiseError(["invalid value type", { found: ["tagged union", null], expected: expected }], $.token.annotation)
+//                             raiseError(['invalid value type', { found: ['tagged union', null], expected: expected }], $.token.annotation)
 //                         }
 //                         return createDummyRequiredValueHandler()
 //                     },
@@ -504,7 +504,7 @@ import * as pl from 'pareto-core-lib'
 //                     })
 //                 } else {
 //                     raiseError(
-//                         ["invalid value type", { found: ["object", null], expected: expected }],
+//                         ['invalid value type', { found: ['object', null], expected: expected }],
 //                         $.token.annotation,
 //                     )
 //                 }
@@ -531,7 +531,7 @@ import * as pl from 'pareto-core-lib'
 //                     })
 //                 } else {
 //                     raiseError(
-//                         ["invalid value type", { found: ["array", null], expected: expected }],
+//                         ['invalid value type', { found: ['array', null], expected: expected }],
 //                         $.token.annotation
 //                     )
 //                 }
@@ -569,7 +569,7 @@ import * as pl from 'pareto-core-lib'
 //     ): void {
 //         $i.issueHandler({
 //             issue: issue,
-//             severity: ["error", null],
+//             severity: ['error', null],
 //             annotation: annotation,
 //         })
 //     }
@@ -579,7 +579,7 @@ import * as pl from 'pareto-core-lib'
 //     ): void {
 //         $i.issueHandler({
 //             issue: issue,
-//             severity: ["warning", null],
+//             severity: ['warning', null],
 //             annotation: annotation,
 //         })
 //     }
@@ -610,14 +610,14 @@ import * as pl from 'pareto-core-lib'
 //         expectSimpleString: ($) => {
 
 //             const expectValue: api.TExpectedValue = {
-//                 "type": ["string", null],
+//                 "type": ['string', null],
 //                 "null allowed": $.onNull !== undefined,
 //             }
 //             return expectSimpleStringImp(expectValue, $.callback, $i.onInvalidType)
 //         },
 //         expectQuotedString: ($) => {
 //             const expectValue: api.TExpectedValue = {
-//                 "type": ["quoted string", null],
+//                 "type": ['quoted string', null],
 //                 "null allowed": $.onNull !== undefined,
 //             }
 //             return expectSimpleStringImp(
@@ -625,7 +625,7 @@ import * as pl from 'pareto-core-lib'
 //                 ($$) => {
 //                     if ($$.token.token.wrapping[0] !== "quote") {
 //                         if ($.warningOnly) {
-//                             raiseWarning(["string is not quoted", null], $$.token.annotation)
+//                             raiseWarning(['string is not quoted', null], $$.token.annotation)
 //                             return $.callback({
 //                                 token: $$.token,
 //                             })
@@ -636,7 +636,7 @@ import * as pl from 'pareto-core-lib'
 //                                 })
 //                             } else {
 //                                 raiseError(
-//                                     ["string is not quoted", null],
+//                                     ['string is not quoted', null],
 //                                     $$.token.annotation,
 //                                 )
 //                             }
@@ -652,7 +652,7 @@ import * as pl from 'pareto-core-lib'
 //         },
 //         expectNonWrappedString: ($) => {
 //             const expectValue: api.TExpectedValue = {
-//                 "type": ["nonwrapped string", null],
+//                 "type": ['nonwrapped string', null],
 //                 "null allowed": $.onNull !== undefined,
 //             }
 //             return expectSimpleStringImp(
@@ -660,7 +660,7 @@ import * as pl from 'pareto-core-lib'
 //                 ($$) => {
 //                     if ($$.token.token.wrapping[0] !== "none") {
 //                         if ($.warningOnly) {
-//                             raiseWarning(["string should not have quotes or apostrophes", null], $$.token.annotation)
+//                             raiseWarning(['string should not have quotes or apostrophes', null], $$.token.annotation)
 //                             return $.callback({
 //                                 token: $$.token,
 //                             })
@@ -671,7 +671,7 @@ import * as pl from 'pareto-core-lib'
 //                                 })
 //                             } else {
 //                                 raiseError(
-//                                     ["string should not have quotes or apostrophes", null],
+//                                     ['string should not have quotes or apostrophes', null],
 //                                     $$.token.annotation,
 //                                 )
 //                             }
@@ -688,7 +688,7 @@ import * as pl from 'pareto-core-lib'
 //         expectDictionary: ($) => {
 
 //             const expectValue: api.TExpectedValue = {
-//                 "type": ["dictionary", null],
+//                 "type": ['dictionary', null],
 //                 "null allowed": false,
 //             }
 //             return {
@@ -702,7 +702,7 @@ import * as pl from 'pareto-core-lib'
 //         expectVerboseGroup: ($) => {
 
 //             const expectValue: api.TExpectedValue = {
-//                 "type": ["verbose group", null],
+//                 "type": ['verbose group', null],
 //                 "null allowed": $.onNull !== undefined,
 //             }
 //             return {
@@ -721,7 +721,7 @@ import * as pl from 'pareto-core-lib'
 //         expectList: ($) => {
 
 //             const expectValue: api.TExpectedValue = {
-//                 "type": ["list", null],
+//                 "type": ['list', null],
 //                 "null allowed": false,
 //             }
 //             return {
@@ -735,7 +735,7 @@ import * as pl from 'pareto-core-lib'
 //         expectShorthandGroup: ($) => {
 
 //             const expectValue: api.TExpectedValue = {
-//                 "type": ["shorthand group", null],
+//                 "type": ['shorthand group', null],
 //                 "null allowed": $.onNull !== undefined,
 //             }
 //             return {
@@ -750,7 +750,7 @@ import * as pl from 'pareto-core-lib'
 //         expectGroup: ($) => {
 
 //             const expectValue: api.TExpectedValue = {
-//                 "type": ["type or shorthand group", null],
+//                 "type": ['type or shorthand group', null],
 //                 "null allowed": $.onNull !== undefined,
 //             }
 //             return {
@@ -769,7 +769,7 @@ import * as pl from 'pareto-core-lib'
 //         expectTaggedUnion: ($) => {
 
 //             const expectValue: api.TExpectedValue = {
-//                 "type": ["tagged union", null],
+//                 "type": ['tagged union', null],
 //                 "null allowed": $.onNull !== undefined,
 //             }
 //             return {

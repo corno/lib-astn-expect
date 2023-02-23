@@ -1,5 +1,5 @@
 // import * as pl from 'pareto-core-lib'
-// import * as pm from 'pareto-core-state'
+// import * as ps from 'pareto-core-state'
 
 // import * as h from "api-astn-handlers"
 // import * as apl from "lib-astn-parser"
@@ -56,8 +56,8 @@
 //             const ec = lib.$.createExpectContext<ata.TokenizerAnnotationData>(
 //                 {
 
-//                     duplicateEntrySeverity: ["warning", null],
-//                     onDuplicateEntry: ["overwrite", null],
+//                     duplicateEntrySeverity: ['warning', null],
+//                     onDuplicateEntry: ['overwrite', null],
 //                 },
 //                 {
 //                     issueHandler: ($) => {

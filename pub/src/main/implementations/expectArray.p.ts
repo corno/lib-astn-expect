@@ -1,8 +1,7 @@
-import * as pl from 'pareto-core-lib'
 
-import * as api from "../api"
+import * as mapi from "../api"
 
-export const $$: api.CexpectArray = ($, $i) => {
+export const $$: mapi.CexpectArray = ($, $i) => {
     return {
         'array': $i.handler,
         'multilineString': ($) => {
