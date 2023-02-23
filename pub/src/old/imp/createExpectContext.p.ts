@@ -3,10 +3,10 @@ import * as pl from 'pareto-core-lib'
 // import * as ps from 'pareto-core-state'
 // import * as pw from 'pareto-core-raw'
 
-// import * as mth from "api-astn-handlers"
-// import * as muglyStuff from "api-pareto-ugly-stuff"
+// import * as gth from "api-astn-handlers"
+// import * as guglyStuff from "api-pareto-ugly-stuff"
 
-// import * as mapi from "../interface"
+// import * as gapi from "../interface"
 // import { createDummyValueHandler } from "./dummyHandlers.p"
 // import { XExpectContext } from "../interface"
 

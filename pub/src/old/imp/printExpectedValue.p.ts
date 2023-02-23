@@ -1,6 +1,6 @@
 // import * as pl from 'pareto-core-lib'
 
-// import * as minf from "../interface"
+// import * as ginf from "../interface"
 
 // export function printExpectedValueType(vt: inf.TExpectedValueType): string {
 //     switch (vt[0]) {

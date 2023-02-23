@@ -1,10 +1,11 @@
 
-import * as mapi from "../api"
-import * as mh from "glo-astn-handlers"
+import * as gh from "glo-astn-handlers"
 
-export const $$: mapi.CcreateUnexpectedHandler = ($, $i) => {
+import { CcreateUnexpectedHandler } from "../api"
 
-    function createDummyObjectHandler<PAnnotation>(): mh.IObjectHandler<PAnnotation> {
+export const $$:CcreateUnexpectedHandler = ($, $i) => {
+
+    function createDummyObjectHandler<PAnnotation>(): gh.IObjectHandler<PAnnotation> {
         return {
             property: () => {
                 return createDummyRequiredValueHandler()
@@ -15,7 +16,7 @@ export const $$: mapi.CcreateUnexpectedHandler = ($, $i) => {
             onEnd: () => { },
         }
     }
-    function createDummyArrayHandler<PAnnotation>(): mh.IArrayHandler<PAnnotation> {
+    function createDummyArrayHandler<PAnnotation>(): gh.IArrayHandler<PAnnotation> {
         return {
             element: () => {
                 return createDummyValueHandler()
@@ -23,14 +24,14 @@ export const $$: mapi.CcreateUnexpectedHandler = ($, $i) => {
             onEnd: () => { }
         }
     }
-    function createDummyTaggedUnionHandler<PAnnotation>(): mh.ITaggedUnionHandler<PAnnotation> {
+    function createDummyTaggedUnionHandler<PAnnotation>(): gh.ITaggedUnionHandler<PAnnotation> {
         return {
             option: () => createDummyRequiredValueHandler(),
             missingOption: () => createDummyRequiredValueHandler(),
             onEnd: () => { }
         }
     }
-    function createDummyValueHandler<PAnnotation>(): mh.IValueHandler<PAnnotation> {
+    function createDummyValueHandler<PAnnotation>(): gh.IValueHandler<PAnnotation> {
 
         return {
             object: () => {
@@ -49,7 +50,7 @@ export const $$: mapi.CcreateUnexpectedHandler = ($, $i) => {
         }
     }
 
-    function createDummyRequiredValueHandler<PAnnotation>(): mh.IRequiredValueHandler<PAnnotation> {
+    function createDummyRequiredValueHandler<PAnnotation>(): gh.IRequiredValueHandler<PAnnotation> {
         return {
             'missing': () => {
             },

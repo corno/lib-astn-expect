@@ -1,7 +1,9 @@
 
-import * as mapi from "../api"
 
-export const $$: mapi.CexpectQuotedString = ($, $i) => {
+
+import { CexpectQuotedString } from "../api"
+
+export const $$:CexpectQuotedString = ($, $i) => {
     return ($) => {
         if ($.token.wrapping[0] !== 'quote') {
             $i.unexpected(null)

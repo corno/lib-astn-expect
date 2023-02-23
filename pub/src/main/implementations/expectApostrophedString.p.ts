@@ -1,7 +1,8 @@
 
-import * as mapi from "../api"
 
-export const $$: mapi.CexpectApostrophedString = ($, $i) => {
+import { CexpectApostrophedString } from "../api"
+
+export const $$:CexpectApostrophedString = ($, $i) => {
     return ($) => {
         if ($.token.wrapping[0] !== 'apostrophe') {
             $i.unexpected(null)

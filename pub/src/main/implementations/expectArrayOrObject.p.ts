@@ -1,7 +1,8 @@
 
-import * as mapi from "../api"
 
-export const $$: mapi.CexpectArrayOrObject = ($, $i) => {
+import { CexpectArrayOrObject } from "../api"
+
+export const $$:CexpectArrayOrObject = ($, $i) => {
     return {
         'array': $i.arrayHandler,
         'multilineString': ($) => {

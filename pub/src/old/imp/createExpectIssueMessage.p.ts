@@ -1,6 +1,6 @@
 // import * as pl from 'pareto-core-lib'
 
-// import * as mapi from "../interface"
+// import * as gapi from "../interface"
 
 // import { printExpectedValue, printExpectedValueType } from "./printExpectedValue.p"
 

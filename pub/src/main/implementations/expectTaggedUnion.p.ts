@@ -1,7 +1,9 @@
 
-import * as mapi from "../api"
 
-export const $$: mapi.CexpectTaggedUnion = ($, $i) => {
+
+import { CexpectTaggedUnion } from "../api"
+
+export const $$:CexpectTaggedUnion = ($, $i) => {
     return {
         'array': ($) => {
             return $i.unexpected.array({

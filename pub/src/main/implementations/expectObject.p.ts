@@ -1,7 +1,9 @@
 
-import * as mapi from "../api"
 
-export const $$: mapi.CexpectObject = ($, $i) => {
+
+import { CexpectObject } from "../api"
+
+export const $$:CexpectObject = ($, $i) => {
     return {
         'array': ($) => {
             return $i.unexpected.array({

@@ -10,11 +10,11 @@ import {
     dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, glossaryParameter, type, parametrizedInterfaceReference, parametrizedType, typeParameter, parametrizedReference, parametrizedTypeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
-import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
+import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
 const d = pd.d
 
-export const $: mglossary.T.Glossary<pd.SourceLocation> = {
+export const $: gglossary.T.Glossary<pd.SourceLocation> = {
     'imports': d({
         "common": "glo-pareto-common",
         "h": "glo-astn-handlers",
