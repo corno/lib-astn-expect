@@ -1,6 +1,5 @@
 
 
-
 import { CexpectSimpleString } from "../api"
 
 export const $$:CexpectSimpleString = ($, $i) => {

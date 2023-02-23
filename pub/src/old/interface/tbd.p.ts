@@ -13,7 +13,6 @@
 //     | ['ignore', null]
 //     | ['overwrite', null]
 
-
 // export type TDiagnosticSeverity =
 //     | ['warning', null]
 //     | ['error', null]

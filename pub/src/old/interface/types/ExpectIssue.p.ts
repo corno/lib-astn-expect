@@ -12,7 +12,6 @@
 //     | ['open curly', null]
 //     | ['open paren', null]
 
-
 // export type TExpectIssue =
 //     | ['array is not a list', null]
 //     | ['array is not a shorthand group', null]
