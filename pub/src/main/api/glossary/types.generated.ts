@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-types'
 
-import * as mcommon from "glo-pareto-common"
-import * as mh from "glo-astn-handlers"
+import * as gcommon from "glo-pareto-common"
+import * as gh from "glo-astn-handlers"
 
 export namespace T {
     
@@ -42,15 +42,15 @@ export namespace T {
         | ['simple string', {}]
         | ['tagged union', {}]
     
-    export type UnexpectedArray<GPAnnotation> = T.UnexpectedValue<GPAnnotation, mh.T.OpenArrayToken<T.Annotation<GPAnnotation>>>
+    export type UnexpectedArray<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.OpenArrayToken<T.Annotation<GPAnnotation>>>
     
-    export type UnexpectedMultilineString<GPAnnotation> = T.UnexpectedValue<GPAnnotation, mh.T.MultilineStringToken<T.Annotation<GPAnnotation>>>
+    export type UnexpectedMultilineString<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.MultilineStringToken<T.Annotation<GPAnnotation>>>
     
-    export type UnexpectedObject<GPAnnotation> = T.UnexpectedValue<GPAnnotation, mh.T.OpenObjectToken<T.Annotation<GPAnnotation>>>
+    export type UnexpectedObject<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.OpenObjectToken<T.Annotation<GPAnnotation>>>
     
-    export type UnexpectedSimpleString<GPAnnotation> = T.UnexpectedValue<GPAnnotation, mh.T.SimpleStringToken<T.Annotation<GPAnnotation>>>
+    export type UnexpectedSimpleString<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.SimpleStringToken<T.Annotation<GPAnnotation>>>
     
-    export type UnexpectedTaggedUnion<GPAnnotation> = T.UnexpectedValue<GPAnnotation, mh.T.TaggedUnionToken<T.Annotation<GPAnnotation>>>
+    export type UnexpectedTaggedUnion<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.TaggedUnionToken<T.Annotation<GPAnnotation>>>
     
     export namespace UnexpectedValue {
         

@@ -1,29 +1,29 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./glossary"
+import * as gglo from "./glossary"
 
 
-export type CcreateUnexpectedHandler = glo.FCreateUnexpectedHandler
+export type CcreateUnexpectedHandler = gglo.FCreateUnexpectedHandler
 
-export type CexpectApostrophedString = glo.FExpectApostrophedString
+export type CexpectApostrophedString = gglo.FExpectApostrophedString
 
-export type CexpectArray = glo.FExpectArray
+export type CexpectArray = gglo.FExpectArray
 
-export type CexpectArrayOrObject = glo.FExpectArrayOrObject
+export type CexpectArrayOrObject = gglo.FExpectArrayOrObject
 
-export type CexpectDictionary = glo.FExpectDictionary
+export type CexpectDictionary = gglo.FExpectDictionary
 
-export type CexpectList = glo.FExpectList
+export type CexpectList = gglo.FExpectList
 
-export type CexpectMultilineString = glo.FExpectMultilineString
+export type CexpectMultilineString = gglo.FExpectMultilineString
 
-export type CexpectObject = glo.FExpectObject
+export type CexpectObject = gglo.FExpectObject
 
-export type CexpectQuotedString = glo.FExpectQuotedString
+export type CexpectQuotedString = gglo.FExpectQuotedString
 
-export type CexpectSimpleString = glo.FExpectSimpleString
+export type CexpectSimpleString = gglo.FExpectSimpleString
 
-export type CexpectTaggedUnion = glo.FExpectTaggedUnion
+export type CexpectTaggedUnion = gglo.FExpectTaggedUnion
 
 export type API = {
     createUnexpectedHandler: CcreateUnexpectedHandler
