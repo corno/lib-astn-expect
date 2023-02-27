@@ -9,7 +9,7 @@ import { $ as api } from "./api.data"
 export const $: gproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "create handlers that will validate that the received data is according to expectations",
-    'license': "ISC",
+    'license': "TBD",
 
     'dependencies': d({
         "lib-astn-dummyhandlers": {},
@@ -17,6 +17,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
     'type': ['library', {
         'main': {
             'definition': api,
+            'implementation': ['manual', {}],
         },
         'submodules': d({
         }),
