@@ -1,13 +1,9 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    null_,
-    array,
-    string,
     reference,
-    boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, glossaryParameter, type, parametrizedInterfaceReference, parametrizedType, typeParameter, parametrizedReference, parametrizedTypeReference
+     group, member, taggedUnion, func, interfaceReference, inf, method, glossaryParameter, type, parametrizedInterfaceReference, parametrizedType, typeParameter, parametrizedReference, parametrizedTypeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as gglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
