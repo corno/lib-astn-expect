@@ -11,36 +11,36 @@ export namespace T {
         
         export namespace array {}
         
-        export type array<GPAnnotation> = {}
+        export type array<GPAnnotation> = null
         
         export namespace array__or__object {}
         
-        export type array__or__object<GPAnnotation> = {}
+        export type array__or__object<GPAnnotation> = null
         
         export namespace multiline__string {}
         
-        export type multiline__string<GPAnnotation> = {}
+        export type multiline__string<GPAnnotation> = null
         
         export namespace _lobject {}
         
-        export type _lobject<GPAnnotation> = {}
+        export type _lobject<GPAnnotation> = null
         
         export namespace simple__string {}
         
-        export type simple__string<GPAnnotation> = {}
+        export type simple__string<GPAnnotation> = null
         
         export namespace tagged__union {}
         
-        export type tagged__union<GPAnnotation> = {}
+        export type tagged__union<GPAnnotation> = null
     }
     
     export type Expected<GPAnnotation> = 
-        | ['array', {}]
-        | ['array or object', {}]
-        | ['multiline string', {}]
-        | ['object', {}]
-        | ['simple string', {}]
-        | ['tagged union', {}]
+        | ['array', null]
+        | ['array or object', null]
+        | ['multiline string', null]
+        | ['object', null]
+        | ['simple string', null]
+        | ['tagged union', null]
     
     export type UnexpectedArray<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.OpenArrayToken<T.Annotation<GPAnnotation>>>
     
@@ -74,41 +74,41 @@ export namespace T {
             
             export namespace array {}
             
-            export type array<GPAnnotation> = {}
+            export type array<GPAnnotation> = null
             
             export namespace multiline__string {}
             
-            export type multiline__string<GPAnnotation> = {}
+            export type multiline__string<GPAnnotation> = null
             
             export namespace _lobject {}
             
-            export type _lobject<GPAnnotation> = {}
+            export type _lobject<GPAnnotation> = null
             
             export namespace simple__string {}
             
-            export type simple__string<GPAnnotation> = {}
+            export type simple__string<GPAnnotation> = null
             
             export namespace tagged__union {}
             
-            export type tagged__union<GPAnnotation> = {}
+            export type tagged__union<GPAnnotation> = null
         }
         
         export type found<GPAnnotation> = 
-            | ['array', {}]
-            | ['multiline string', {}]
-            | ['object', {}]
-            | ['simple string', {}]
-            | ['tagged union', {}]
+            | ['array', null]
+            | ['multiline string', null]
+            | ['object', null]
+            | ['simple string', null]
+            | ['tagged union', null]
     }
     
     export type UnexpectedValueError<GPAnnotation> = {
         readonly 'annotation': GPAnnotation
         readonly 'expected': T.Expected<GPAnnotation>
         readonly 'found': 
-            | ['array', {}]
-            | ['multiline string', {}]
-            | ['object', {}]
-            | ['simple string', {}]
-            | ['tagged union', {}]
+            | ['array', null]
+            | ['multiline string', null]
+            | ['object', null]
+            | ['simple string', null]
+            | ['tagged union', null]
     }
 }

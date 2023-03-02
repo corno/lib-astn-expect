@@ -6,25 +6,25 @@ export const $$:CexpectTaggedUnion = ($, $i) => {
     return {
         'array': ($) => {
             return $i.unexpected.array({
-                'expected': ['tagged union', {}],
+                'expected': ['tagged union', null],
                 'token': $,
             })
         },
         'multilineString': ($) => {
             $i.unexpected['multiline string']({
-                'expected': ['tagged union', {}],
+                'expected': ['tagged union', null],
                 'token': $,
             })
         },
         'object': ($) => {
             return $i.unexpected.object({
-                'expected': ['tagged union', {}],
+                'expected': ['tagged union', null],
                 'token': $,
             })
         },
         'simpleString': ($) => {
             $i.unexpected['simple string']({
-                'expected': ['tagged union', {}],
+                'expected': ['tagged union', null],
                 'token': $,
             })
         },

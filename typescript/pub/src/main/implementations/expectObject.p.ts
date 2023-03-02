@@ -6,26 +6,26 @@ export const $$:CexpectObject = ($, $i) => {
     return {
         'array': ($) => {
             return $i.unexpected.array({
-                'expected': ['object', {}],
+                'expected': ['object', null],
                 'token': $,
             })
         },
         'multilineString': ($) => {
             $i.unexpected['multiline string']({
-                'expected': ['object', {}],
+                'expected': ['object', null],
                 'token': $,
             })
         },
         'object': $i.handler,
         'simpleString': ($) => {
             $i.unexpected['simple string']({
-                'expected': ['object', {}],
+                'expected': ['object', null],
                 'token': $,
             })
         },
         'taggedUnion': ($) => {
             return $i.unexpected['tagged union']({
-                'expected': ['object', {}],
+                'expected': ['object', null],
                 'token': $,
             })
         },

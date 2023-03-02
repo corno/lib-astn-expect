@@ -13,7 +13,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
     'license': "TBD",
 
     'dependencies': d({
-        "lib-astn-dummyhandlers": {},
+        "lib-astn-dummyhandlers": null,
     }),
     'type': ['library', {
         'main': {
@@ -21,7 +21,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
                 'glossary': glossary,
                 'api': api,
             },
-            'implementation': ['typescript', {}],
+            'implementation': ['typescript', null],
         },
         'submodules': d({
         }),

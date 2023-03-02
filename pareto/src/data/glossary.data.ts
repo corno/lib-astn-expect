@@ -16,7 +16,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
         "h": "glo-astn-handlers",
     }),
     'parameters': d({
-        "Annotation": {},
+        "Annotation": null,
     }),
     'types': d({
         "Annotation": type(glossaryParameter("Annotation")),
@@ -28,7 +28,7 @@ export const $: gglossary.T.Glossary<pd.SourceLocation> = {
             "simple string": group({}),
             "tagged union": group({}),
         })),
-        "UnexpectedValue": parametrizedType({ "Token": {} }, group({
+        "UnexpectedValue": parametrizedType({ "Token": null }, group({
             "expected": member(reference("Expected")),
             "token": member(typeParameter("Token")),
         })),

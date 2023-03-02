@@ -6,26 +6,26 @@ export const $$:CexpectMultilineString = ($, $i) => {
     return {
         'array': ($) => {
             return $i.unexpected.array({
-                'expected': ['multiline string', {}],
+                'expected': ['multiline string', null],
                 'token': $,
             })
         },
         'multilineString': $i.handler,
         'object': ($) => {
             return $i.unexpected.object({
-                'expected': ['multiline string', {}],
+                'expected': ['multiline string', null],
                 'token': $,
             })
         },
         'simpleString': ($) => {
             $i.unexpected['simple string']({
-                'expected': ['multiline string', {}],
+                'expected': ['multiline string', null],
                 'token': $,
             })
         },
         'taggedUnion': ($) => {
             return $i.unexpected['tagged union']({
-                'expected': ['multiline string', {}],
+                'expected': ['multiline string', null],
                 'token': $,
             })
         },

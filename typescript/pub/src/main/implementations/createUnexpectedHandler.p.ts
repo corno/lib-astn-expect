@@ -62,7 +62,7 @@ export const $$:CcreateUnexpectedHandler = ($, $i) => {
             $i({
                 'annotation': $.token.annotation,
                 'expected': $.expected,
-                'found': ['array', {}],
+                'found': ['array', null],
             })
             return createDummyArrayHandler()
         },
@@ -70,14 +70,14 @@ export const $$:CcreateUnexpectedHandler = ($, $i) => {
             $i({
                 'annotation': $.token.annotation,
                 'expected': $.expected,
-                'found': ['multiline string', {}],
+                'found': ['multiline string', null],
             })
         },
         'object': ($) => {
             $i({
                 'annotation': $.token.annotation,
                 'expected': $.expected,
-                'found': ['object', {}],
+                'found': ['object', null],
             })
             return createDummyObjectHandler()
         },
@@ -85,7 +85,7 @@ export const $$:CcreateUnexpectedHandler = ($, $i) => {
             $i({
                 'annotation': $.token.annotation,
                 'expected': $.expected,
-                'found': ['simple string', {}],
+                'found': ['simple string', null],
             })
 
         },
@@ -93,7 +93,7 @@ export const $$:CcreateUnexpectedHandler = ($, $i) => {
             $i({
                 'annotation': $.token.annotation,
                 'expected': $.expected,
-                'found': ['tagged union', {}],
+                'found': ['tagged union', null],
             })
             return createDummyTaggedUnionHandler()
         },
