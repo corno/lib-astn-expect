@@ -5,7 +5,7 @@ import * as pa from 'pareto-core-async'
 import * as gpub from "../../../../../pub"
 import * as gtest from "lib-pareto-test"
 
-import { CgetTestSet } from "../api"
+import { CgetTestSet } from "../definition/api.generated"
 
 export const $$:CgetTestSet = () => {
 

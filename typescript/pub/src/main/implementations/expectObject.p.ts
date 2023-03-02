@@ -1,6 +1,6 @@
 
 
-import { CexpectObject } from "../api"
+import { CexpectObject } from "../definition/api.generated"
 
 export const $$:CexpectObject = ($, $i) => {
     return {

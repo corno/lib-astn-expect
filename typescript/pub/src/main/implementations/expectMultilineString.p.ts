@@ -1,6 +1,6 @@
 
 
-import { CexpectMultilineString } from "../api"
+import { CexpectMultilineString } from "../definition/api.generated"
 
 export const $$:CexpectMultilineString = ($, $i) => {
     return {

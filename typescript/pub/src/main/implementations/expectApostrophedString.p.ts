@@ -1,6 +1,6 @@
 
 
-import { CexpectApostrophedString } from "../api"
+import { CexpectApostrophedString } from "../definition/api.generated"
 
 export const $$:CexpectApostrophedString = ($, $i) => {
     return ($) => {

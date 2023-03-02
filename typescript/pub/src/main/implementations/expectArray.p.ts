@@ -1,6 +1,6 @@
 
 
-import { CexpectArray } from "../api"
+import { CexpectArray } from "../definition/api.generated"
 
 export const $$:CexpectArray = ($, $i) => {
     return {

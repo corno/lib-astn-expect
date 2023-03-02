@@ -1,7 +1,7 @@
 
 import * as gh from "glo-astn-handlers"
 
-import { CcreateUnexpectedHandler } from "../api"
+import { CcreateUnexpectedHandler } from "../definition/api.generated"
 
 export const $$:CcreateUnexpectedHandler = ($, $i) => {
 

@@ -1,4 +1,4 @@
-import { API } from "./api"
+import { API } from "./definition/api.generated"
 import { $$ as icreateUnexpectedHandler } from "./implementations/createUnexpectedHandler.p"
 import { $$ as iexpectApostrophedString } from "./implementations/expectApostrophedString.p"
 import { $$ as iexpectArray } from "./implementations/expectArray.p"

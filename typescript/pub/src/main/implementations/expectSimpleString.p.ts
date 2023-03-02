@@ -1,6 +1,6 @@
 
 
-import { CexpectSimpleString } from "../api"
+import { CexpectSimpleString } from "../definition/api.generated"
 
 export const $$:CexpectSimpleString = ($, $i) => {
     return {

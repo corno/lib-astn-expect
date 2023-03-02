@@ -1,6 +1,6 @@
 
 
-import { CexpectTaggedUnion } from "../api"
+import { CexpectTaggedUnion } from "../definition/api.generated"
 
 export const $$:CexpectTaggedUnion = ($, $i) => {
     return {

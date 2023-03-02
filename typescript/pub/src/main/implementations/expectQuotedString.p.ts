@@ -1,6 +1,6 @@
 
 
-import { CexpectQuotedString } from "../api"
+import { CexpectQuotedString } from "../definition/api.generated"
 
 export const $$:CexpectQuotedString = ($, $i) => {
     return ($) => {

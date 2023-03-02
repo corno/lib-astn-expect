@@ -1,6 +1,6 @@
 
 
-import { CexpectDictionary } from "../api"
+import { CexpectDictionary } from "../definition/api.generated"
 
 export const $$:CexpectDictionary = ($, $i) => {
     return ($) => {
