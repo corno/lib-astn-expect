@@ -7,9 +7,6 @@ import * as gapi from "lib-pareto-typescript-project/dist/submodules/api"
 const d = pd.d
 
 export const $: gapi.T.API<pd.SourceLocation> = {
-    'imports': d({
-        "this": "./glossary",
-    }),
     'algorithms': d({
         "expectDictionary": algorithm(functionReference("this", {}, "ExpectDictionary")),
         "expectList": algorithm(functionReference("this", {}, "ExpectList")),

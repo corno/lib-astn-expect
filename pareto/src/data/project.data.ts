@@ -7,6 +7,9 @@ const d = pd.d
 import { $ as api } from "./api.data"
 import { $ as glossary } from "./glossary.data"
 
+import { external, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
+
+
 export const $: gproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "create handlers that will validate that the received data is according to expectations",
@@ -18,8 +21,20 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
     'type': ['library', {
         'main': {
             'definition': {
-                'glossary': glossary,
-                'api': api,
+                'glossary': {
+                    'root': glossary,
+                    'imports': d({
+                        "common": external("glo-pareto-common"),
+                        "h": external("glo-astn-handlers"),
+                    }),
+
+                },
+                'api': {
+                    'root': api,
+                    'imports': d({
+                        "this": this_(),
+                    }),
+                },
             },
             'implementation': ['typescript', null],
         },
@@ -31,11 +46,11 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
             }),
             'glossary': {
                 'functions': d({}),
-                'imports': d({}),
                 'parameters': d({}),
                 'types': d({}),
                 'interfaces': d({}),
             },
+            'imports': d({}),
         }
     }],
 }
