@@ -1,8 +1,8 @@
 
 
-import { CexpectSimpleString } from "../definition/api.generated"
+import { expectSimpleString } from "../definition/api.generated"
 
-export const $$:CexpectSimpleString = ($, $i) => {
+export const $$:expectSimpleString = ($, $i) => {
     return {
         'array': ($) => {
             return $i.unexpected.array({

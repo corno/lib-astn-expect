@@ -1,8 +1,8 @@
 
 
-import { CexpectQuotedString } from "../definition/api.generated"
+import { expectQuotedString } from "../definition/api.generated"
 
-export const $$:CexpectQuotedString = ($, $i) => {
+export const $$:expectQuotedString = ($, $i) => {
     return ($) => {
         if ($.token.wrapping[0] !== 'quote') {
             $i.unexpected(null)

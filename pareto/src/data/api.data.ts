@@ -19,5 +19,5 @@ export const $: gapi.T.API<pd.SourceLocation> = {
         "expectApostrophedString": algorithm(functionReference("this", {}, "ExpectApostrophedString")),
         "expectTaggedUnion": algorithm(functionReference("this", {}, "ExpectTaggedUnion")),
         "createUnexpectedHandler": algorithm(functionReference("this", {}, "CreateUnexpectedHandler")),
-    })
+    }),
 }

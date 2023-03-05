@@ -1,8 +1,8 @@
 
 
-import { CexpectTaggedUnion } from "../definition/api.generated"
+import { expectTaggedUnion } from "../definition/api.generated"
 
-export const $$:CexpectTaggedUnion = ($, $i) => {
+export const $$:expectTaggedUnion = ($, $i) => {
     return {
         'array': ($) => {
             return $i.unexpected.array({

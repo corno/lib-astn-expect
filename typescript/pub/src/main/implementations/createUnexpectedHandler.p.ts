@@ -1,9 +1,9 @@
 
 import * as gh from "glo-astn-handlers"
 
-import { CcreateUnexpectedHandler } from "../definition/api.generated"
+import { createUnexpectedHandler } from "../definition/api.generated"
 
-export const $$:CcreateUnexpectedHandler = ($, $i) => {
+export const $$:createUnexpectedHandler = ($, $i) => {
 
     function createDummyObjectHandler<PAnnotation>(): gh.IObjectHandler<PAnnotation> {
         return {

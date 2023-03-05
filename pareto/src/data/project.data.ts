@@ -48,6 +48,7 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
                 'functions': d({}),
                 'parameters': d({}),
                 'types': d({}),
+                'builders': d({}),
                 'interfaces': d({}),
             },
             'imports': d({}),

@@ -1,8 +1,8 @@
 
 
-import { CexpectDictionary } from "../definition/api.generated"
+import { expectDictionary } from "../definition/api.generated"
 
-export const $$:CexpectDictionary = ($, $i) => {
+export const $$:expectDictionary = ($, $i) => {
     return ($) => {
         if ($.token.type[0] !== 'dictionary') {
             $i.unexpected(null)

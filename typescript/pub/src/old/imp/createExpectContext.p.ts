@@ -7,7 +7,7 @@ import * as pl from 'pareto-core-lib'
 // import * as guglyStuff from "api-pareto-ugly-stuff"
 
 // import * as gapi from "../interface"
-// import { createDummyValueHandler } from "./dummyHandlers.p"
+// import { reateDummyValueHandler } from "./dummyHandlers.p"
 // import { XExpectContext } from "../interface"
 
 // interface ICreateContext<PAnnotation> {

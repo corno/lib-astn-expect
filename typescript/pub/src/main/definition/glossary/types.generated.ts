@@ -1,40 +1,40 @@
 import * as pt from 'pareto-core-types'
 
-import * as gcommon from "glo-pareto-common"
-import * as gh from "glo-astn-handlers"
+import * as g_common from "glo-pareto-common"
+import * as g_h from "glo-astn-handlers"
 
 export namespace T {
     
-    export type Annotation<GPAnnotation> = GPAnnotation
+    export type Annotation<GAnnotation> = GAnnotation
     
     export namespace Expected {
         
         export namespace array {}
         
-        export type array<GPAnnotation> = null
+        export type array<GAnnotation> = null
         
         export namespace array__or__object {}
         
-        export type array__or__object<GPAnnotation> = null
+        export type array__or__object<GAnnotation> = null
         
         export namespace multiline__string {}
         
-        export type multiline__string<GPAnnotation> = null
+        export type multiline__string<GAnnotation> = null
         
         export namespace _lobject {}
         
-        export type _lobject<GPAnnotation> = null
+        export type _lobject<GAnnotation> = null
         
         export namespace simple__string {}
         
-        export type simple__string<GPAnnotation> = null
+        export type simple__string<GAnnotation> = null
         
         export namespace tagged__union {}
         
-        export type tagged__union<GPAnnotation> = null
+        export type tagged__union<GAnnotation> = null
     }
     
-    export type Expected<GPAnnotation> = 
+    export type Expected<GAnnotation> = 
         | ['array', null]
         | ['array or object', null]
         | ['multiline string', null]
@@ -42,58 +42,58 @@ export namespace T {
         | ['simple string', null]
         | ['tagged union', null]
     
-    export type UnexpectedArray<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.OpenArrayToken<T.Annotation<GPAnnotation>>>
+    export type UnexpectedArray<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.OpenArrayToken<T.Annotation<GAnnotation>>>
     
-    export type UnexpectedMultilineString<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.MultilineStringToken<T.Annotation<GPAnnotation>>>
+    export type UnexpectedMultilineString<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.MultilineStringToken<T.Annotation<GAnnotation>>>
     
-    export type UnexpectedObject<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.OpenObjectToken<T.Annotation<GPAnnotation>>>
+    export type UnexpectedObject<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.OpenObjectToken<T.Annotation<GAnnotation>>>
     
-    export type UnexpectedSimpleString<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.SimpleStringToken<T.Annotation<GPAnnotation>>>
+    export type UnexpectedSimpleString<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.SimpleStringToken<T.Annotation<GAnnotation>>>
     
-    export type UnexpectedTaggedUnion<GPAnnotation> = T.UnexpectedValue<GPAnnotation, gh.T.TaggedUnionToken<T.Annotation<GPAnnotation>>>
+    export type UnexpectedTaggedUnion<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.TaggedUnionToken<T.Annotation<GAnnotation>>>
     
     export namespace UnexpectedValue {
         
-        export type expected<GPAnnotation, AToken> = T.Expected<GPAnnotation>
+        export type expected<GAnnotation, TToken> = T.Expected<GAnnotation>
         
-        export type token<GPAnnotation, AToken> = AToken
+        export type token<GAnnotation, TToken> = TToken
     }
     
-    export type UnexpectedValue<GPAnnotation, AToken> = {
-        readonly 'expected': T.Expected<GPAnnotation>
-        readonly 'token': AToken
+    export type UnexpectedValue<GAnnotation, TToken> = {
+        readonly 'expected': T.Expected<GAnnotation>
+        readonly 'token': TToken
     }
     
     export namespace UnexpectedValueError {
         
-        export type annotation<GPAnnotation> = GPAnnotation
+        export type annotation<GAnnotation> = GAnnotation
         
-        export type expected<GPAnnotation> = T.Expected<GPAnnotation>
+        export type expected<GAnnotation> = T.Expected<GAnnotation>
         
         export namespace found {
             
             export namespace array {}
             
-            export type array<GPAnnotation> = null
+            export type array<GAnnotation> = null
             
             export namespace multiline__string {}
             
-            export type multiline__string<GPAnnotation> = null
+            export type multiline__string<GAnnotation> = null
             
             export namespace _lobject {}
             
-            export type _lobject<GPAnnotation> = null
+            export type _lobject<GAnnotation> = null
             
             export namespace simple__string {}
             
-            export type simple__string<GPAnnotation> = null
+            export type simple__string<GAnnotation> = null
             
             export namespace tagged__union {}
             
-            export type tagged__union<GPAnnotation> = null
+            export type tagged__union<GAnnotation> = null
         }
         
-        export type found<GPAnnotation> = 
+        export type found<GAnnotation> = 
             | ['array', null]
             | ['multiline string', null]
             | ['object', null]
@@ -101,9 +101,9 @@ export namespace T {
             | ['tagged union', null]
     }
     
-    export type UnexpectedValueError<GPAnnotation> = {
-        readonly 'annotation': GPAnnotation
-        readonly 'expected': T.Expected<GPAnnotation>
+    export type UnexpectedValueError<GAnnotation> = {
+        readonly 'annotation': GAnnotation
+        readonly 'expected': T.Expected<GAnnotation>
         readonly 'found': 
             | ['array', null]
             | ['multiline string', null]

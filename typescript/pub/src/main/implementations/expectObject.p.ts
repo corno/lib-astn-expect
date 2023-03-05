@@ -1,8 +1,8 @@
 
 
-import { CexpectObject } from "../definition/api.generated"
+import { expectObject } from "../definition/api.generated"
 
-export const $$:CexpectObject = ($, $i) => {
+export const $$:expectObject = ($, $i) => {
     return {
         'array': ($) => {
             return $i.unexpected.array({

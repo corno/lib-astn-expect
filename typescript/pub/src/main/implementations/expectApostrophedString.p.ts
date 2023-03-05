@@ -1,8 +1,8 @@
 
 
-import { CexpectApostrophedString } from "../definition/api.generated"
+import { expectApostrophedString } from "../definition/api.generated"
 
-export const $$:CexpectApostrophedString = ($, $i) => {
+export const $$:expectApostrophedString = ($, $i) => {
     return ($) => {
         if ($.token.wrapping[0] !== 'apostrophe') {
             $i.unexpected(null)

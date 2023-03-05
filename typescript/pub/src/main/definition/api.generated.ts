@@ -1,39 +1,39 @@
 import * as pt from 'pareto-core-types'
 
-import * as gthis from "./glossary"
+import * as g_this from "./glossary"
 
-export type CcreateUnexpectedHandler = gthis.FCreateUnexpectedHandler
+export type createUnexpectedHandler = g_this.F.CreateUnexpectedHandler
 
-export type CexpectApostrophedString = gthis.FExpectApostrophedString
+export type expectApostrophedString = g_this.F.ExpectApostrophedString
 
-export type CexpectArray = gthis.FExpectArray
+export type expectArray = g_this.F.ExpectArray
 
-export type CexpectArrayOrObject = gthis.FExpectArrayOrObject
+export type expectArrayOrObject = g_this.F.ExpectArrayOrObject
 
-export type CexpectDictionary = gthis.FExpectDictionary
+export type expectDictionary = g_this.F.ExpectDictionary
 
-export type CexpectList = gthis.FExpectList
+export type expectList = g_this.F.ExpectList
 
-export type CexpectMultilineString = gthis.FExpectMultilineString
+export type expectMultilineString = g_this.F.ExpectMultilineString
 
-export type CexpectObject = gthis.FExpectObject
+export type expectObject = g_this.F.ExpectObject
 
-export type CexpectQuotedString = gthis.FExpectQuotedString
+export type expectQuotedString = g_this.F.ExpectQuotedString
 
-export type CexpectSimpleString = gthis.FExpectSimpleString
+export type expectSimpleString = g_this.F.ExpectSimpleString
 
-export type CexpectTaggedUnion = gthis.FExpectTaggedUnion
+export type expectTaggedUnion = g_this.F.ExpectTaggedUnion
 
 export type API = {
-    createUnexpectedHandler: CcreateUnexpectedHandler
-    expectApostrophedString: CexpectApostrophedString
-    expectArray: CexpectArray
-    expectArrayOrObject: CexpectArrayOrObject
-    expectDictionary: CexpectDictionary
-    expectList: CexpectList
-    expectMultilineString: CexpectMultilineString
-    expectObject: CexpectObject
-    expectQuotedString: CexpectQuotedString
-    expectSimpleString: CexpectSimpleString
-    expectTaggedUnion: CexpectTaggedUnion
+    createUnexpectedHandler: createUnexpectedHandler
+    expectApostrophedString: expectApostrophedString
+    expectArray: expectArray
+    expectArrayOrObject: expectArrayOrObject
+    expectDictionary: expectDictionary
+    expectList: expectList
+    expectMultilineString: expectMultilineString
+    expectObject: expectObject
+    expectQuotedString: expectQuotedString
+    expectSimpleString: expectSimpleString
+    expectTaggedUnion: expectTaggedUnion
 }

@@ -1,8 +1,8 @@
 
 
-import { CexpectArray } from "../definition/api.generated"
+import { expectArray } from "../definition/api.generated"
 
-export const $$:CexpectArray = ($, $i) => {
+export const $$:expectArray = ($, $i) => {
     return {
         'array': $i.handler,
         'multilineString': ($) => {
