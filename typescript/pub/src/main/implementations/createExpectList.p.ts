@@ -1,8 +1,8 @@
 
 
-import { expectList } from "../definition/api.generated"
+import { A } from "../api.generated"
 
-export const $$:expectList = ($, $i) => {
+export const $$: A.createExpectList = ($, $i) => {
     return ($) => {
         if ($.token.type[0] !== 'list') {
             $i.unexpected(null)

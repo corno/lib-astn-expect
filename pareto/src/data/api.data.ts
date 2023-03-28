@@ -1,23 +1,31 @@
 import * as pd from 'pareto-core-data'
 
-import { functionReference, algorithm } from "lib-pareto-typescript-project/dist/submodules/api/shorthands"
+import { constructor, algorithm } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
-import * as gapi from "lib-pareto-typescript-project/dist/submodules/api"
+import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
 const d = pd.d
 
-export const $: gapi.T.API<pd.SourceLocation> = {
+export const $: g_project.T.ModuleDefinition.api.root<pd.SourceLocation> = {
     'algorithms': d({
-        "expectDictionary": algorithm(functionReference("this", {}, "ExpectDictionary")),
-        "expectList": algorithm(functionReference("this", {}, "ExpectList")),
-        "expectArray": algorithm(functionReference("this", {}, "ExpectArray")),
-        "expectArrayOrObject": algorithm(functionReference("this", {}, "ExpectArrayOrObject")),
-        "expectObject": algorithm(functionReference("this", {}, "ExpectObject")),
-        "expectMultilineString": algorithm(functionReference("this", {}, "ExpectMultilineString")),
-        "expectSimpleString": algorithm(functionReference("this", {}, "ExpectSimpleString")),
-        "expectQuotedString": algorithm(functionReference("this", {}, "ExpectQuotedString")),
-        "expectApostrophedString": algorithm(functionReference("this", {}, "ExpectApostrophedString")),
-        "expectTaggedUnion": algorithm(functionReference("this", {}, "ExpectTaggedUnion")),
-        "createUnexpectedHandler": algorithm(functionReference("this", {}, "CreateUnexpectedHandler")),
+        // "expectDictionary": algorithm(sconstructor("this", {}, "ExpectDictionary")),
+        // "expectList": algorithm(sconstructor("this", {}, "ExpectList")),
+        "createExpectArray": algorithm(constructor("this", {}, "CreateExpectArray"), { "Annotation": "Annotation" }),
+        "createExpectArrayOrObject": algorithm(constructor("this", {}, "CreateExpectArrayOrObject"), { "Annotation": "Annotation" }),
+        "createExpectObject": algorithm(constructor("this", {}, "CreateExpectObject"), { "Annotation": "Annotation" }),
+        "createExpectMultilineString": algorithm(constructor("this", {}, "CreateExpectMultilineString"), { "Annotation": "Annotation" }),
+        "createExpectSimpleString": algorithm(constructor("this", {}, "CreateExpectSimpleString"), { "Annotation": "Annotation" }),
+        "createExpectTaggedUnion": algorithm(constructor("this", {}, "CreateExpectTaggedUnion"), { "Annotation": "Annotation" }),
+        // "createExpectArray": algorithm(constructor("this", {}, "CreateExpectArray"), { "Annotation": "Annotation" }),
+        // "createExpectArray": algorithm(constructor("this", {}, "CreateExpectArray"), { "Annotation": "Annotation" }),
+        // "createExpectArray": algorithm(constructor("this", {}, "CreateExpectArray"), { "Annotation": "Annotation" }),
+        // "expectArrayOrObject": algorithm(sconstructor("this", {}, "ExpectArrayOrObject")),
+        // "expectObject": algorithm(sconstructor("this", {}, "ExpectObject")),
+        // "expectMultilineString": algorithm(sconstructor("this", {}, "ExpectMultilineString")),
+        // "expectSimpleString": algorithm(sconstructor("this", {}, "ExpectSimpleString")),
+        // "expectQuotedString": algorithm(sconstructor("this", {}, "ExpectQuotedString")),
+        // "expectApostrophedString": algorithm(sconstructor("this", {}, "ExpectApostrophedString")),
+        // "expectTaggedUnion": algorithm(sconstructor("this", {}, "ExpectTaggedUnion")),
+        "createUnexpectedValueHandler": algorithm(constructor("this", {}, "CreateUnexpectedValueHandler"), { "Annotation": "Annotation" }),
     }),
 }

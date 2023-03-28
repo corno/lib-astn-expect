@@ -1,6 +1,6 @@
 import * as pd from 'pareto-core-data'
 
-import * as gproject from "lib-pareto-typescript-project/dist/submodules/project"
+import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 
 const d = pd.d
 
@@ -10,7 +10,7 @@ import { $ as glossary } from "./glossary.data"
 import { external, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
 
-export const $: gproject.T.Project<pd.SourceLocation> = {
+export const $: g_project.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "create handlers that will validate that the received data is according to expectations",
     'license': "TBD",
@@ -40,18 +40,39 @@ export const $: gproject.T.Project<pd.SourceLocation> = {
         },
         'submodules': d({
         }),
+        'bindings': [false],
         'executables': d({}),
         'test': {
             'dependencies': d({
             }),
-            'glossary': {
-                'functions': d({}),
-                'parameters': d({}),
-                'types': d({}),
-                'builders': d({}),
-                'interfaces': d({}),
+            'definition': {
+                'glossary': {
+                    'root': {
+                        'parameters': d({}),
+                        'imports': d({}),
+                        'root': {
+                            'namespaces': d({}),
+                            'types': d({}),
+                        },
+                        'asynchronous': {
+                            'interfaces': d({}),
+                            'algorithms': d({}),
+                        },
+                        'synchronous': {
+                            'interfaces': d({}),
+                            'algorithms': d({}),
+                        },
+                    },
+                    'imports': d({}),
+                },
+                'api': {
+                    'root': {
+                        'algorithms': d({}),
+                    },
+                    'imports': d({}),
+                },
             },
             'imports': d({}),
-        }
+        },
     }],
 }
