@@ -3,12 +3,12 @@
 import { A } from "../api.generated"
 
 export const $$: A.createExpectDictionary = () => {
-    ($, $i) => {
+    ($is) => {
         return ($) => {
             if ($.token.type[0] !== 'dictionary') {
-                $i.unexpected(null)
+                $is.unexpected(null)
             }
-            return $i.handler($)
+            return $is.handler($)
         }
     }
 }

@@ -1,6 +1,6 @@
 import * as pd from 'pareto-core-data'
 
-import { constructor, aInterfaceMethod, aInterfaceReference, externalTypeReference, glossaryParameter, group, imp, member, parametrizedType, ref, taggedUnion, type, typeParameter, typeReference } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
+import { constructor, aInterfaceMethod, aInterfaceReference, externalTypeReference, glossaryParameter, group, imp, member, parametrizedType, ref, taggedUnion, type, typeParameter, typeReference, aExternalInterfaceReference, aInterface } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
@@ -16,7 +16,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'root': {
         'namespaces': d({}),
         'types': d({
-            "Annotation": type(glossaryParameter("Annotation")),
+            "Annotation": type(ref(glossaryParameter("Annotation"))),
             "Expected": type(taggedUnion({
                 "array": group({}),
                 "array or object": group({}),
@@ -27,7 +27,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             })),
             "UnexpectedValue": parametrizedType({ "Token": null }, group({
                 "expected": member(ref(typeReference("Expected"))),
-                "token": member(typeParameter("Token")),
+                "token": member(ref(typeParameter("Token"))),
             })),
             "UnexpectedArray": type(ref(typeReference("UnexpectedValue", { "Token": externalTypeReference("h", "OpenArrayToken") }))),
             "UnexpectedMultilineString": type(ref(typeReference("UnexpectedValue", { "Token": externalTypeReference("h", "MultilineStringToken") }))),
@@ -35,7 +35,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             "UnexpectedSimpleString": type(ref(typeReference("UnexpectedValue", { "Token": externalTypeReference("h", "SimpleStringToken") }))),
             "UnexpectedTaggedUnion": type(ref(typeReference("UnexpectedValue", { "Token": externalTypeReference("h", "TaggedUnionToken") }))),
             "UnexpectedValueError": type(group({
-                "annotation": member(glossaryParameter("Annotation")),
+                "annotation": member(ref(glossaryParameter("Annotation"))),
                 "expected": member(ref(typeReference("Expected"))),
                 "found": member(taggedUnion({
                     "array": group({}),
@@ -49,50 +49,50 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     },
     'asynchronous': {
         'interfaces': d({
-            "UnexpectedValueHandler": ['choice', {
+            "UnexpectedValueHandler": aInterface(['choice', {
                 'options': d({
-                    "array": aInterfaceMethod(typeReference("UnexpectedArray"), ['reference', aInterfaceReference("h", "ArrayHandler")]),
+                    "array": aInterfaceMethod(typeReference("UnexpectedArray"), ['reference', aExternalInterfaceReference("h", "ArrayHandler")]),
                     "multiline string": aInterfaceMethod(typeReference("UnexpectedMultilineString")),
-                    "object": aInterfaceMethod(typeReference("UnexpectedObject"), ['reference', aInterfaceReference("h", "ObjectHandler")]),
+                    "object": aInterfaceMethod(typeReference("UnexpectedObject"), ['reference', aExternalInterfaceReference("h", "ObjectHandler")]),
                     "simple string": aInterfaceMethod(typeReference("UnexpectedSimpleString")),
-                    "tagged union": aInterfaceMethod(typeReference("UnexpectedTaggedUnion"), ['reference', aInterfaceReference("h", "TaggedUnionHandler")]),
+                    "tagged union": aInterfaceMethod(typeReference("UnexpectedTaggedUnion"), ['reference', aExternalInterfaceReference("h", "TaggedUnionHandler")]),
                 }),
-            }],
-            "OnUnexpectedValue": aInterfaceMethod(typeReference("UnexpectedValueError")),
+            }]),
+            "OnUnexpectedValue": aInterface(aInterfaceMethod(typeReference("UnexpectedValueError"))),
 
         }),
         'algorithms': d({
-            "CreateExpectArray": constructor(aInterfaceReference("h", "ValueHandler"), {
-                "handler": aInterfaceReference("h", "OnArray"),
+            "CreateExpectArray": constructor(aExternalInterfaceReference("h", "ValueHandler"), {
+                "handler": aExternalInterfaceReference("h", "OnArray"),
                 "unexpected": aInterfaceReference("UnexpectedValueHandler")
             }),
-            "CreateExpectArrayOrObject": constructor(aInterfaceReference("h", "ValueHandler"), {
-                "objectHandler": aInterfaceReference("h", "OnObject"),
-                "arrayHandler": aInterfaceReference("h", "OnArray"),
+            "CreateExpectArrayOrObject": constructor(aExternalInterfaceReference("h", "ValueHandler"), {
+                "objectHandler": aExternalInterfaceReference("h", "OnObject"),
+                "arrayHandler": aExternalInterfaceReference("h", "OnArray"),
                 "unexpected": aInterfaceReference("UnexpectedValueHandler")
             }),
-            "CreateExpectObject": constructor(aInterfaceReference("h", "ValueHandler"), {
-                "handler": aInterfaceReference("h", "OnObject"),
+            "CreateExpectObject": constructor(aExternalInterfaceReference("h", "ValueHandler"), {
+                "handler": aExternalInterfaceReference("h", "OnObject"),
                 "unexpected": aInterfaceReference("UnexpectedValueHandler")
             }),
-            "CreateExpectMultilineString": constructor(aInterfaceReference("h", "ValueHandler"), {
-                "handler": aInterfaceReference("h", "OnMultilineString"),
+            "CreateExpectMultilineString": constructor(aExternalInterfaceReference("h", "ValueHandler"), {
+                "handler": aExternalInterfaceReference("h", "OnMultilineString"),
                 "unexpected": aInterfaceReference("UnexpectedValueHandler")
             }),
-            "CreateExpectSimpleString": constructor(aInterfaceReference("h", "ValueHandler"), {
-                "handler": aInterfaceReference("h", "OnSimpleString"),
+            "CreateExpectSimpleString": constructor(aExternalInterfaceReference("h", "ValueHandler"), {
+                "handler": aExternalInterfaceReference("h", "OnSimpleString"),
                 "unexpected": aInterfaceReference("UnexpectedValueHandler")
             }),
-            "CreateExpectDictionary": constructor(aInterfaceReference("h", "ValueHandler"), {
-                "handler": aInterfaceReference("h", "OnObject"),
+            "CreateExpectDictionary": constructor(aExternalInterfaceReference("h", "ValueHandler"), {
+                "handler": aExternalInterfaceReference("h", "OnObject"),
                 "unexpected": aInterfaceReference("UnexpectedValueHandler")
             }),
-            "CreateExpectList": constructor(aInterfaceReference("h", "ValueHandler"), {
-                "handler": aInterfaceReference("h", "OnArray"),
+            "CreateExpectList": constructor(aExternalInterfaceReference("h", "ValueHandler"), {
+                "handler": aExternalInterfaceReference("h", "OnArray"),
                 "unexpected": aInterfaceReference("UnexpectedValueHandler")
             }),
-            "CreateExpectTaggedUnion": constructor(aInterfaceReference("h", "ValueHandler"), {
-                "handler": aInterfaceReference("h", "OnTaggedUnion"),
+            "CreateExpectTaggedUnion": constructor(aExternalInterfaceReference("h", "ValueHandler"), {
+                "handler": aExternalInterfaceReference("h", "OnTaggedUnion"),
                 "unexpected": aInterfaceReference("UnexpectedValueHandler")
             }),
             "CreateUnexpectedValueHandler": constructor(aInterfaceReference("UnexpectedValueHandler"), {
