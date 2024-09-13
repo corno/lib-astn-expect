@@ -12,11 +12,11 @@ export namespace ASYNC {
         export type OnUnexpectedValue<GAnnotation> = ($: T.UnexpectedValueError<GAnnotation>, ) => void
         
         export type UnexpectedValueHandler<GAnnotation> = {
-            readonly 'array': ($: T.UnexpectedArray<GAnnotation>, ) => g_h.ASYNC.I.ArrayHandler<T.Annotation<GAnnotation>>
+            readonly 'array': ($: T.UnexpectedArray<GAnnotation>, ) => g_h.ASYNC.I.ArrayHandler
             readonly 'multiline string': ($: T.UnexpectedMultilineString<GAnnotation>, ) => void
-            readonly 'object': ($: T.UnexpectedObject<GAnnotation>, ) => g_h.ASYNC.I.ObjectHandler<T.Annotation<GAnnotation>>
+            readonly 'object': ($: T.UnexpectedObject<GAnnotation>, ) => g_h.ASYNC.I.ObjectHandler
             readonly 'simple string': ($: T.UnexpectedSimpleString<GAnnotation>, ) => void
-            readonly 'tagged union': ($: T.UnexpectedTaggedUnion<GAnnotation>, ) => g_h.ASYNC.I.TaggedUnionHandler<T.Annotation<GAnnotation>>
+            readonly 'tagged union': ($: T.UnexpectedTaggedUnion<GAnnotation>, ) => g_h.ASYNC.I.TaggedUnionHandler
         }
     }
     
@@ -26,9 +26,9 @@ export namespace ASYNC {
         export namespace C {
             export type CreateExpectArray<GAnnotation> = {
                 'construct': ($is: {
-                    readonly 'handler': g_h.ASYNC.I.OnArray<T.Annotation<GAnnotation>>
+                    readonly 'handler': g_h.ASYNC.I.OnArray
                     readonly 'unexpected': ASYNC.I.UnexpectedValueHandler<GAnnotation>
-                }) => g_h.ASYNC.I.ValueHandler<T.Annotation<GAnnotation>>
+                }) => g_h.ASYNC.I.ValueHandler
             }
         }
         
@@ -36,10 +36,10 @@ export namespace ASYNC {
         export namespace C {
             export type CreateExpectArrayOrObject<GAnnotation> = {
                 'construct': ($is: {
-                    readonly 'arrayHandler': g_h.ASYNC.I.OnArray<T.Annotation<GAnnotation>>
-                    readonly 'objectHandler': g_h.ASYNC.I.OnObject<T.Annotation<GAnnotation>>
+                    readonly 'arrayHandler': g_h.ASYNC.I.OnArray
+                    readonly 'objectHandler': g_h.ASYNC.I.OnObject
                     readonly 'unexpected': ASYNC.I.UnexpectedValueHandler<GAnnotation>
-                }) => g_h.ASYNC.I.ValueHandler<T.Annotation<GAnnotation>>
+                }) => g_h.ASYNC.I.ValueHandler
             }
         }
         
@@ -47,9 +47,9 @@ export namespace ASYNC {
         export namespace C {
             export type CreateExpectDictionary<GAnnotation> = {
                 'construct': ($is: {
-                    readonly 'handler': g_h.ASYNC.I.OnObject<T.Annotation<GAnnotation>>
+                    readonly 'handler': g_h.ASYNC.I.OnObject
                     readonly 'unexpected': ASYNC.I.UnexpectedValueHandler<GAnnotation>
-                }) => g_h.ASYNC.I.ValueHandler<T.Annotation<GAnnotation>>
+                }) => g_h.ASYNC.I.ValueHandler
             }
         }
         
@@ -57,9 +57,9 @@ export namespace ASYNC {
         export namespace C {
             export type CreateExpectList<GAnnotation> = {
                 'construct': ($is: {
-                    readonly 'handler': g_h.ASYNC.I.OnArray<T.Annotation<GAnnotation>>
+                    readonly 'handler': g_h.ASYNC.I.OnArray
                     readonly 'unexpected': ASYNC.I.UnexpectedValueHandler<GAnnotation>
-                }) => g_h.ASYNC.I.ValueHandler<T.Annotation<GAnnotation>>
+                }) => g_h.ASYNC.I.ValueHandler
             }
         }
         
@@ -67,9 +67,9 @@ export namespace ASYNC {
         export namespace C {
             export type CreateExpectMultilineString<GAnnotation> = {
                 'construct': ($is: {
-                    readonly 'handler': g_h.ASYNC.I.OnMultilineString<T.Annotation<GAnnotation>>
+                    readonly 'handler': g_h.ASYNC.I.OnMultilineString
                     readonly 'unexpected': ASYNC.I.UnexpectedValueHandler<GAnnotation>
-                }) => g_h.ASYNC.I.ValueHandler<T.Annotation<GAnnotation>>
+                }) => g_h.ASYNC.I.ValueHandler
             }
         }
         
@@ -77,9 +77,9 @@ export namespace ASYNC {
         export namespace C {
             export type CreateExpectObject<GAnnotation> = {
                 'construct': ($is: {
-                    readonly 'handler': g_h.ASYNC.I.OnObject<T.Annotation<GAnnotation>>
+                    readonly 'handler': g_h.ASYNC.I.OnObject
                     readonly 'unexpected': ASYNC.I.UnexpectedValueHandler<GAnnotation>
-                }) => g_h.ASYNC.I.ValueHandler<T.Annotation<GAnnotation>>
+                }) => g_h.ASYNC.I.ValueHandler
             }
         }
         
@@ -87,9 +87,9 @@ export namespace ASYNC {
         export namespace C {
             export type CreateExpectSimpleString<GAnnotation> = {
                 'construct': ($is: {
-                    readonly 'handler': g_h.ASYNC.I.OnSimpleString<T.Annotation<GAnnotation>>
+                    readonly 'handler': g_h.ASYNC.I.OnSimpleString
                     readonly 'unexpected': ASYNC.I.UnexpectedValueHandler<GAnnotation>
-                }) => g_h.ASYNC.I.ValueHandler<T.Annotation<GAnnotation>>
+                }) => g_h.ASYNC.I.ValueHandler
             }
         }
         
@@ -97,9 +97,9 @@ export namespace ASYNC {
         export namespace C {
             export type CreateExpectTaggedUnion<GAnnotation> = {
                 'construct': ($is: {
-                    readonly 'handler': g_h.ASYNC.I.OnTaggedUnion<T.Annotation<GAnnotation>>
+                    readonly 'handler': g_h.ASYNC.I.OnTaggedUnion
                     readonly 'unexpected': ASYNC.I.UnexpectedValueHandler<GAnnotation>
-                }) => g_h.ASYNC.I.ValueHandler<T.Annotation<GAnnotation>>
+                }) => g_h.ASYNC.I.ValueHandler
             }
         }
         

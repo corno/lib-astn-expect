@@ -44,15 +44,15 @@ export namespace T {
         | ['simple string', null]
         | ['tagged union', null]
     
-    export type UnexpectedArray<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.OpenArrayToken<T.Annotation<GAnnotation>>>
+    export type UnexpectedArray<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.OpenArrayToken>
     
-    export type UnexpectedMultilineString<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.MultilineStringToken<T.Annotation<GAnnotation>>>
+    export type UnexpectedMultilineString<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.MultilineStringToken>
     
-    export type UnexpectedObject<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.OpenObjectToken<T.Annotation<GAnnotation>>>
+    export type UnexpectedObject<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.OpenObjectToken>
     
-    export type UnexpectedSimpleString<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.SimpleStringToken<T.Annotation<GAnnotation>>>
+    export type UnexpectedSimpleString<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.SimpleStringToken>
     
-    export type UnexpectedTaggedUnion<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.TaggedUnionToken<T.Annotation<GAnnotation>>>
+    export type UnexpectedTaggedUnion<GAnnotation> = T.UnexpectedValue<GAnnotation, g_h.T.TaggedUnionToken>
     
     export namespace UnexpectedValue {
         
